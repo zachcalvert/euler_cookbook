@@ -1,0 +1,30 @@
+body {
+    font-family: Helvetica;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+td, th {
+  border: 1px solid #999;
+  padding: 0.5rem;
+  text-align: left;
+}
+
+.table-header {
+	font-weight: bold;
+}
+
+#header {
+	margin: 20px 0 30px 20px;
+}
+
+#input-area {
+	float:left; 
+	margin: 10px 40px;
+}
+#output-area {
+	float: left;
+	margin: 10px 0 0 30px;
+}

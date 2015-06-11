@@ -1,0 +1,34 @@
+<html>
+	<head>
+		<title> 
+            {% block page_title %} 
+                The Project Euler Cookbook
+            {% endblock %}
+        </title>
+        
+        {% block head_js %}
+			<script src="{{ STATIC_URL }}js/jquery-2.1.4.min.js"></script>
+		{% endblock %}
+		{% block head_css %}
+			<link rel="stylesheet" href="{{ STATIC_URL }}css/base.css"/>
+		{% endblock %}
+		<!-- avoid fake favicon requests -->
+		<link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+	</head>
+
+	<body>
+		{% block header %}
+			<a href='{% url "site_home" %}'><h3>The Project Euler Cookbook</h3></a>
+		{% endblock %}
+
+		{% block content %}
+			<ul>
+				<li><a href='{% url "sum_square_home" %}'>Problem 6: Sum square difference</a></li>
+				<li><a href='{% url "counting_sundays_home" %}'>Problem 19: Counting sundays</a></li>
+		{% endblock %}
+
+
+		{% block extra_body_content %}{% endblock %}
+	</body>
+
+</html>

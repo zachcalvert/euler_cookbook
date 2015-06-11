@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+	
+	{% block header %}
+	{{ block.super }}
+		<div id="header">
+			<h3>Problem 6: Sum square difference</h3>
+		</div>
+	{% endblock %}
+
+	{% block content %}
+		<div id="input-area">
+			<input type="text" id="id_calculator" value="">
+			<input type="submit" id="submit-button" value="Calculate">
+			<p>Enter a number!</p>
+		</div>
+
+		<div id="output-area">
+			<table id="request-table" width="700px">
+				<caption>Calculation Log</caption>
+				<tbody>
+					<tr id="headers">
+						<td class="table-header">Number</td>
+						<td class="table-header">Value</td>
+						<td class="table-header">Occurrences</td>
+						<td class="table-header">Last Requested</td>
+					</tr>
+					<tr id="placeholders">
+						<td id="number-result">&nbsp;</td>
+						<td id="value-result">&nbsp;</td>
+						<td id="occurrences-result">&nbsp;</td>
+						<td id="time-result">&nbsp;</td>
+					</tr>
+				</tbody>
+			</table>
+		<div>
+	{% endblock %}
+
+	{% block extra_body_content %}
+		<script>
+			$(document).ready(function () {
+			    function calculateResult(number) {
+			        $.ajax({
+			        	// hard coded urls are bad
+			            // url: 'http://localhost:8000/difference?number=' + number,
+			            url: '{% url "get_sum_square_difference" %}' + '?number=' + number,
+			            type: 'get',
+			            contentType: 'application/json',
+			            success: function(response) {
+			            	// fill table cells with results
+			            	var response_data = JSON.parse(response);
+
+			            	// check for existing entries for this number and remove
+			            	$("#request-table tr td:nth-child(1)").each(function () {
+			            		if (response_data.number == $(this).html()) {
+			            			$(this).closest('tr').css('display', 'None');
+			            		}
+							});
+
+			            	// prepend to top of the table
+			            	$('#headers').after(
+							    '<tr><td>' + 
+							    	response_data.number + '</td><td>' +
+							    	response_data.value  + '</td><td>' +
+							    	response_data.occurrences  + '</td><td>' +
+							    	response_data.last_requested  +
+							    '</td></tr>');
+			            },
+			            error: function (jqXhr, textStatus, errorThrown) {
+			                console.log(errorThrown);
+			            }
+			        });
+			    };
+
+			    $("#submit-button").click(function(){
+			        var number = $( "#id_calculator" ).val()
+			        calculateResult(number)
+		    	});
+			});
+		</script>
+	{% endblock %}
