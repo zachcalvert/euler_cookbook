@@ -4,3 +4,5 @@ djangorestframework<3.2
 
 django_extensions<1.6
 ipython<3.2
+requests<2.8
+beautifulsoup4<4.3.3

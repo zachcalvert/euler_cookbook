@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+	
+{% block header %}
+	{{ block.super }}
+	<div id="header">
+		<h3>Problem {{ problem.number }}: {{ problem.title}}   <a href="{{ problem.link }}">(view on project euler)</a></h3>
+		<p>{{ problem.description }}</p>
+	</div>
+{% endblock %}
+
+{% block content %}
+
+	{% block solution %}
+	{% endblock %}
+
+{% endblock %}
+
+{% block extra_body_content %}
+	
+{% endblock %}

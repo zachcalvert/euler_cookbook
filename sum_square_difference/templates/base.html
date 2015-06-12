@@ -2,7 +2,7 @@
 	<head>
 		<title> 
             {% block page_title %} 
-                The Project Euler Cookbook
+                The Euler Cookbook
             {% endblock %}
         </title>
         
@@ -18,15 +18,16 @@
 
 	<body>
 		{% block header %}
-			<a href='{% url "site_home" %}'><h3>The Project Euler Cookbook</h3></a>
+			<a href='{% url "site_home" %}'><h3>The Euler Cookbook</h3></a>
 		{% endblock %}
 
 		{% block content %}
 			<ul>
-				<li><a href='{% url "sum_square_home" %}'>Problem 6: Sum square difference</a></li>
-				<li><a href='{% url "counting_sundays_home" %}'>Problem 19: Counting sundays</a></li>
+			{% for problem in problems %}
+				<li><a href="{{ problem.get_absolute_url }}">Problem {{ problem.number }}: {{ problem.title}}</a></li>
+			{% endfor %}
+			</ul>
 		{% endblock %}
-
 
 		{% block extra_body_content %}{% endblock %}
 	</body>

@@ -1,38 +1,38 @@
 {% extends 'base.html' %}
 	
-	{% block header %}
+{% block header %}
 	{{ block.super }}
-		<div id="header">
-			<h3>Problem 6: Sum square difference   <a href="https://projecteuler.net/problem=6">(view on project euler)</a></h3>
-			<p>The sum of the squares of the first ten natural numbers is: <br><i>1<sup>2</sup> + 2<sup>2</sup> + ... + 10<sup>2</sup> = 385</i><br><br>The square of the sum of the first ten natural numbers is: <br><i>(1 + 2 + ... + 10)<sup>2</sup> = 552 = 3025</i><br><br>Hence the difference between the sum of the squares of the first ten natural numbers and the square of the sum is <i>3025 − 385 = 2640</i>.<br><br>Enter any number to find the difference between these two calculations!</p>
-		</div>
-	{% endblock %}
+	<div id="header">
+		<h3>Problem 6: Sum square difference   <a href="https://projecteuler.net/problem=6">(view on project euler)</a></h3>
+		<p>The sum of the squares of the first ten natural numbers is: <br><i>1<sup>2</sup> + 2<sup>2</sup> + ... + 10<sup>2</sup> = 385</i><br><br>The square of the sum of the first ten natural numbers is: <br><i>(1 + 2 + ... + 10)<sup>2</sup> = 552 = 3025</i><br><br>Hence the difference between the sum of the squares of the first ten natural numbers and the square of the sum is <i>3025 − 385 = 2640</i>.<br><br>Enter any number to find the difference between these two calculations!</p>
+	</div>
+{% endblock %}
 
-	{% block content %}
-		<div id="input-area">
-			<input type="text" id="id_calculator" value="">
-			<input type="submit" id="submit-button" value="Calculate">
-			<p>Enter a number!</p>
-		</div>
+{% block content %}
+	<div id="input-area">
+		<input type="text" id="id_calculator" value="">
+		<input type="submit" id="submit-button" value="Calculate">
+		<p>Enter a number!</p>
+	</div>
 
-		<div id="output-area">
-			<table id="request-table" width="700px">
-				<caption>Calculation Log</caption>
-				<tbody>
-					<tr id="headers">
-						<td class="table-header">Number</td>
-						<td class="table-header">Difference</td>
-						<td class="table-header">Last Requested</td>
-					</tr>
-					<tr id="placeholders">
-						<td id="number-result">&nbsp;</td>
-						<td id="value-result">&nbsp;</td>
-						<td id="time-result">&nbsp;</td>
-					</tr>
-				</tbody>
-			</table>
-		<div>
-	{% endblock %}
+	<div id="output-area">
+		<table id="request-table" width="700px">
+			<caption>Calculation Log</caption>
+			<tbody>
+				<tr id="headers">
+					<td class="table-header">Number</td>
+					<td class="table-header">Difference</td>
+					<td class="table-header">Last Requested</td>
+				</tr>
+				<tr id="placeholders">
+					<td id="number-result">&nbsp;</td>
+					<td id="value-result">&nbsp;</td>
+					<td id="time-result">&nbsp;</td>
+				</tr>
+			</tbody>
+		</table>
+	<div>
+{% endblock %}
 
 	{% block extra_body_content %}
 		<script>
