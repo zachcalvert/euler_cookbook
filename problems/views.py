@@ -1,6 +1,6 @@
 from django.shortcuts import render_to_response, get_object_or_404
-from django.template import RequestContext
-from django.views.generic import TemplateView
+from django.template import RequestContext, TemplateDoesNotExist
+from django.template.loader import get_template
 
 from problems.models import Problem
 
@@ -13,11 +13,17 @@ def site_home(request, template_name = 'base.html'):
 	return render_to_response(template_name, context_instance=RequestContext(request, context))
 
 
-class ProblemView(TemplateView):
-    template_name = "problem.html"
+def euler_problem(request, problem_number):
+	template_name = "solutions/{}.html".format(problem_number)
+	try:
+		get_template(template_name)
+	except TemplateDoesNotExist:
+		template_name = "problem.html"
 
-    def get_context_data(self, **kwargs):
-        context = super(ProblemView, self).get_context_data(**kwargs)
-        problem = get_object_or_404(Problem, number=kwargs['problem_number'])
-        context['problem'] = problem
-        return context
+	problem = get_object_or_404(Problem, number=problem_number)
+	
+	context = {
+		'problem': problem,
+	}
+
+	return render_to_response(template_name, context_instance=RequestContext(request, context))
