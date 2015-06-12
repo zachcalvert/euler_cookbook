@@ -14,5 +14,3 @@ class Problem(models.Model):
 	def __unicode__(self):
 		return '#{0}: {1}'.format(self.number, self.title)
 
-
-

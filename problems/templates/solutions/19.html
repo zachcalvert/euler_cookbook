@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+	
+	{% block header %}
+	{{ block.super }}
+		<div id="header">
+			<h3>Problem 19: Counting sundays <a href="https://projecteuler.net/problem=19">(view on project euler)</a></h3>
+			<p>You are given the following information, but you may prefer to do some research for yourself.</p>
+			<ul>
+				<li>1 Jan 1900 was a Monday.</li>
+				<li>Thirty days has september,<br>April, June, and November<br>All the rest have thirty-one,<br>saving February alone,<br>Which has twenty-eight, rain or shie.<br>And on leap years, twenty-nine</li>
+				<li>A leap year occurs on any year evenly divisible by 4, but not on a century unless it is divisible by 400.</li>
+			</ul>
+			<p>How many Sundays fell on the first of the month during the twentieth century (1 Jan 1901 to 31 Dec 2000)?</p>
+		</div>
+	{% endblock %}
+
+	{% block content %}
+		<button id="solution-button">
+			<span class="ui-button-text">Show Solution</span>
+		</button>
+
+		<div id="solution">
+			<p>We solve this with the following three functions:</p>
+			<code>
+				def how_many_sundays():<br>
+				&nbsp;&nbsp;count = 0<br>
+				&nbsp;&nbsp;for y in range(1901, 2001):<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;for m in range(1, 13):<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if day_of_week(y, m, day_of_month) == weekday:<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count +=1<br>
+				&nbsp;&nbsp;return count<br><br>
+
+				def day_of_week(year, month, day):<br>
+				&nbsp;&nbsp;m = mod(month-3, 4800)<br>
+				&nbsp;&nbsp;y = mod(year +m/12, 400)<br>
+				&nbsp;&nbsp;m %= 12<br>
+				&nbsp;&nbsp;return (y + y/4 - y/100 + (13*m +2)/5 + day + 2) % 7<br><br>
+
+				def mod(x, y):<br>
+				&nbsp;&nbsp;x %= y<br>
+				&nbsp;&nbsp;if (y > 0 and x < 0) or (y < 0 and x > 0):<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;x += y<br>
+				&nbsp;&nbsp;return x	
+			</code>
+		</div>
+		<div id="input-area">
+			<h3>Generalized solution</h3>
+			<p>Enter some values to find out some exciting and useless info!</p>
+			<label for="id_weekday">Day of Week</label>
+			<select id="id_weekday">
+				<option value="0">Sunday</option>
+				<option value="1">Monday</option>
+				<option value="2">Tuesday</option>
+				<option value="3">Wednesday</option>
+				<option value="4">Thursday</option>
+				<option value="5">Friday</option>
+				<option value="6">Saturday</option>
+			</select><br><br>
+
+			<label for="id_day_of_month">Day of Month</label>
+			<input type="text" id="id_day_of_month" value=""><br><br>
+			<label for="id_start_year">Start Year</label>
+			<input type="text" id="id_start_year" name="Start Year" value=""><br><br>
+			<label for="id_end_year">End Year</label>
+			<input type="text" id="id_end_year" name="End Year" value=""><br><br>
+			<input type="submit" id="submit-button" value="Calculate">
+			<p>Enter a number!</p>
+		</div>
+
+		<div id="output-area">
+			<p id="answer"></p>
+		<div>
+
+		<code style="display:none;">
+			def how_many(weekday, day_of_month, start_year, end_year):<br>
+			&nbsp;&nbsp;count = 0<br>
+			&nbsp;&nbsp;for y in range(start_year, end_year + 1):<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;for m in range(1, 13):<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if day_of_week(y, m, day_of_month) == weekday:<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count +=1<br>
+			&nbsp;&nbsp;return count<br><br>	
+		</code>
+	{% endblock %}
+
+	{% block extra_body_content %}
+		<script>
+			$(document).ready(function () {
+			    function calculateResult() {
+			    	var params = {day_of_month: $('#id_day_of_month').val(), weekday: $('#id_weekday').find(":selected").val(),
+			    	start_year: $('#id_start_year').val(), end_year: $('#id_end_year').val()};
+			        $.ajax({
+			            url: '{% url "calculate_days" %}',
+			            type: 'POST',
+			            data: JSON.stringify(params),
+			            contentType: 'application/json',
+			            dataType: 'text',
+			            processData: false,
+			            success: function(response) {
+			            	console.log(response)
+			            	var response_data = JSON.parse(response);
+			            	$("#answer").append("Between " + response_data.start_year + " and " + response_data.end_year + ", the " + response_data.day_of_month + " of the month fell on a " + response_data.weekday + " " + response_data.num_days + " times!");
+			            },
+			            error: function (jqXhr, textStatus, errorThrown) {
+			                console.log(errorThrown);
+			            }
+			        });
+			    };
+
+			    $("#submit-button").click(function(){
+			        calculateResult()
+		    	});
+
+		    	$("#solution-button").click(function(){
+			        if ($("#solution").is(":visible")) {
+						$("#solution").slideUp(500);
+						$("#solution-button span").text('Show solution');
+			        } else {
+			        	$("#solution").slideDown(500);
+			        	$("#solution-button span").text('Hide solution');
+			        }
+		    	});
+			});
+		</script>
+	{% endblock %}

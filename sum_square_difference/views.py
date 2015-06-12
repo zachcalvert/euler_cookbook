@@ -15,7 +15,7 @@ Takes the given number and tries to find it in the db.
 If the number is not found, the value is calculated and
 the corresponding db entry is saved.
 """
-def get_difference(request):
+def get_sum_square_difference(request):
 
 	number = request.GET.get('number', None)
 

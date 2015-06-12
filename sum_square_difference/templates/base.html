@@ -24,7 +24,7 @@
 		{% block content %}
 			<ul>
 			{% for problem in problems %}
-				<li><a href="{{ problem.get_absolute_url }}">Problem {{ problem.number }}: {{ problem.title}}</a></li>
+				<li><a href="{{ problem.get_absolute_url }}">Problem {{ problem.number }}: {{ problem.title}} {% if problem.solved %}(SOLVED){% endif %}</a></li>
 			{% endfor %}
 			</ul>
 		{% endblock %}

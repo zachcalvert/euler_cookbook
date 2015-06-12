@@ -9,6 +9,7 @@
 
 	{% block content %}
 		<div id="input-area">
+			<label for="id_weekday">Day of Week</label>
 			<select id="id_weekday">
 				<option value="0">Sunday</option>
 				<option value="1">Monday</option>
@@ -17,10 +18,14 @@
 				<option value="4">Thursday</option>
 				<option value="5">Friday</option>
 				<option value="6">Saturday</option>
-			</select>
-			<input type="text" id="id_day_of_month" name="Day of Month" value="">
-			<input type="text" id="id_start_year" name="Start Year" value="">
-			<input type="text" id="id_end_year" name="End Year" value="">
+			</select><br><br>
+
+			<label for="id_day_of_month">Day of Month</label>
+			<input type="text" id="id_day_of_month" value=""><br><br>
+			<label for="id_start_year">Start Year</label>
+			<input type="text" id="id_start_year" name="Start Year" value=""><br><br>
+			<label for="id_end_year">End Year</label>
+			<input type="text" id="id_end_year" name="End Year" value=""><br><br>
 			<input type="submit" id="submit-button" value="Calculate">
 			<p>Enter a number!</p>
 		</div>

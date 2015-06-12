@@ -22,9 +22,21 @@ td, th {
 
 #input-area {
 	float:left; 
-	margin: 10px 40px;
+	margin: 40px 40px;
+	display: block;
 }
 #output-area {
 	float: left;
 	margin: 10px 0 0 30px;
+}
+
+#solution {
+	display:none;
+	margin: 50px;
+}
+#solution-button {
+	margin: 20px 10px;
+	position: absolute;
+	top: 300px;
+	left: 20px;
 }
