@@ -21,12 +21,58 @@
 			<a href='{% url "site_home" %}'><h3>The Euler Cookbook</h3></a>
 		{% endblock %}
 
+		{% block description %}{% endblock %}
+
 		{% block content %}
-			<ul>
+			<ul class="pagination nav navbar-nav">
+			    {% if problems.has_previous %}
+			        <a href="?page={{ problems.previous_page_number }}">Prev</a>
+			    {% endif %}
+
+			    {% for page in problems.paginator.page_range %}
+				    {% if problems.number == page %}
+				    	{{ page }}
+				    {% else %}
+				    	<a href="?page={{ page }}">{{ page }}</a>
+				    {% endif %}
+				{% endfor %}
+
+			    {% if problems.has_next %}
+			        <a href="?page={{ problems.next_page_number }}">Next</a>
+			    {% endif %}
+			 </ul>
+			<table>
+				<tr>
+					<td>#</td>
+					<td>Title</td>
+					<td>Solved</td>
+				</tr>
 			{% for problem in problems %}
-				<li><a href="{{ problem.get_absolute_url }}">Problem {{ problem.number }}: {{ problem.title}} {% if problem.solved %}(SOLVED){% endif %}</a></li>
+				<tr>
+					<td>{{ problem.number }}</td>
+					<td><a href="{{ problem.get_absolute_url }}">{{ problem.title}}</a></td>
+					<td>
+						{% if problem.solved %}
+							&#x2713;
+						{% endif %}
+					</td>
+				</tr>
 			{% endfor %}
-			</ul>
+			</table>
+			<ul class="pagination nav navbar-nav">
+			    {% if problems.has_previous %}
+			            <li><a href="?page={{ problems.previous_page_number }}">Prev</a></li>
+			    {% endif %}
+
+			    {% for page in problems.paginator.page_range %}
+				    {% if forloop.counter != 1 %} | {% endif %}
+				    <a href="?page={{ page }}">{{ page }}</a>
+				{% endfor %}
+
+			    {% if problems.has_next %}
+			        <li> <a href="?page={{ problems.next_page_number }}">Next</a></li>
+			    {% endif %}
+			 </ul>
 		{% endblock %}
 
 		{% block extra_body_content %}{% endblock %}

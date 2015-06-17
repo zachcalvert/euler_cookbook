@@ -1,16 +1,13 @@
-{% extends 'base.html' %}
-	
-{% block header %}
+{% extends 'problem.html' %}
 
-	<div id="header">
-		{{ block.super }}
-		<h3>Problem 6: Sum square difference   <a href="https://projecteuler.net/problem=6">(view on project euler)</a></h3>
+{% block description %}
+	<div id="description">
 		<p>The sum of the squares of the first ten natural numbers is: <br><i>1<sup>2</sup> + 2<sup>2</sup> + ... + 10<sup>2</sup> = 385</i><br><br>The square of the sum of the first ten natural numbers is: <br><i>(1 + 2 + ... + 10)<sup>2</sup> = 552 = 3025</i><br><br>Hence the difference between the sum of the squares of the first ten natural numbers and the square of the sum is <i>3025 − 385 = 2640</i>.<br><br></p>
 	</div>
 {% endblock %}
 
 {% block content %}
-	<button id="solution-button" style="top:250px">
+	<button id="solution-button" style="top:270px">
 		<span class="ui-button-text">Show Solution</span>
 	</button>
 

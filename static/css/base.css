@@ -20,6 +20,10 @@ td, th {
 	margin: 20px 0 30px 20px;
 }
 
+#description {
+	margin:30px;
+}
+
 #input-area {
 	float:left; 
 	margin: 40px 40px;
