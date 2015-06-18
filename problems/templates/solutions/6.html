@@ -1,21 +1,5 @@
 {% extends 'problem.html' %}
 
-{% block description %}
-<!-- 	<button id="solution-button" style="top:320px";
-		<span class="ui-button-text">Show Solution</span>
-	</button>
-
-	<div id="solution">
-		<p>We solve this with the following three functions:</p>
-		<code>	
-			{{ problem.solution | safe }}
-		</code>
-	</div> -->
-	<div class="problem-description">
-		<p>The sum of the squares of the first ten natural numbers is: <br><i>1<sup>2</sup> + 2<sup>2</sup> + ... + 10<sup>2</sup> = 385</i><br><br>The square of the sum of the first ten natural numbers is: <br><i>(1 + 2 + ... + 10)<sup>2</sup> = 552 = 3025</i><br><br>Hence the difference between the sum of the squares of the first ten natural numbers and the square of the sum is <i>3025 − 385 = 2640</i>.<br><p>Find the difference between the sum of the squares of the first one hundred natural numbers and the square of the sum.<br></p>
-	</div>
-{% endblock %}
-
 {% block content %}
 	<div id="input-area">
 		<p>Enter any number to see it in action!</p>
@@ -42,55 +26,46 @@
 	</div>
 {% endblock %}
 
-	{% block extra_body_content %}
-		<script>
-			$(document).ready(function () {
-			    function calculateResult(number) {
-			        $.ajax({
-			        	// hard coded urls are bad
-			            // url: 'http://localhost:8000/difference?number=' + number,
-			            url: '{% url "get_sum_square_difference" %}' + '?number=' + number,
-			            type: 'get',
-			            contentType: 'application/json',
-			            success: function(response) {
-			            	// fill table cells with results
-			            	var response_data = JSON.parse(response);
+{% block extra_body_content %}
+	{{ block.super }}
+	<script>
+		$(document).ready(function () {
+		    function calculateResult(number) {
+		        $.ajax({
+		        	// hard coded urls are bad
+		            // url: 'http://localhost:8000/difference?number=' + number,
+		            url: '{% url "get_sum_square_difference" %}' + '?number=' + number,
+		            type: 'get',
+		            contentType: 'application/json',
+		            success: function(response) {
+		            	// fill table cells with results
+		            	var response_data = JSON.parse(response);
 
-			            	// check for existing entries for this number and remove
-			            	$("#request-table tr td:nth-child(1)").each(function () {
-			            		if (response_data.number == $(this).html()) {
-			            			$(this).closest('tr').css('display', 'None');
-			            		}
-							});
+		            	// check for existing entries for this number and remove
+		            	$("#request-table tr td:nth-child(1)").each(function () {
+		            		if (response_data.number == $(this).html()) {
+		            			$(this).closest('tr').css('display', 'None');
+		            		}
+						});
 
-			            	// prepend to top of the table
-			            	$('#headers').after(
-							    '<tr><td>' + 
-							    	response_data.number + '</td><td>' +
-							    	response_data.value  + '</td><td>' +
-							    	response_data.last_requested  +
-							    '</td></tr>');
-			            },
-			            error: function (jqXhr, textStatus, errorThrown) {
-			                console.log(errorThrown);
-			            }
-			        });
-			    };
+		            	// prepend to top of the table
+		            	$('#headers').after(
+						    '<tr><td>' + 
+						    	response_data.number + '</td><td>' +
+						    	response_data.value  + '</td><td>' +
+						    	response_data.last_requested  +
+						    '</td></tr>');
+		            },
+		            error: function (jqXhr, textStatus, errorThrown) {
+		                console.log(errorThrown);
+		            }
+		        });
+		    };
 
-			    $("#submit-button").click(function(){
-			        var number = $( "#id_calculator" ).val()
-			        calculateResult(number)
-		    	});
-
-		    	$("#solution-button").click(function(){
-			        if ($("#solution").is(":visible")) {
-						$("#solution").slideUp(500);
-						$("#solution-button span").text('Show solution');
-			        } else {
-			        	$("#solution").slideDown(500);
-			        	$("#solution-button span").text('Hide solution');
-			        }
-		    	});
-			});
-		</script>
-	{% endblock %}
+		    $("#submit-button").click(function(){
+		        var number = $( "#id_calculator" ).val()
+		        calculateResult(number)
+	    	});
+		});
+	</script>
+{% endblock %}

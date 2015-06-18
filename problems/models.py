@@ -4,7 +4,7 @@ from django.core.urlresolvers import reverse
 class Problem(models.Model):
 	number = models.IntegerField(default=1)
 	title = models.CharField(max_length=60)
-	description = models.CharField(max_length=500)
+	description = models.CharField(max_length=600)
 	link = models.URLField(help_text="URL on Project Euler")
 	solved = models.BooleanField(default=False)
 	solution = models.CharField(max_length=800, null=True, blank=True)

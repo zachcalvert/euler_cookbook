@@ -1,11 +1,5 @@
 {% extends 'problem.html' %}
 
-{% block description %}
-	<div class="problem-description">
-		<p>If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.<br> Find the sum of all the multiples of 3 or 5 below 1000.</p>
-	</div>
-{% endblock %}
-
 {% block content %}
 	<div id="input-area">
 		<p>Enter any number <i>n</i> to see it in action!</p>
@@ -32,55 +26,46 @@
 	</div>
 {% endblock %}
 
-	{% block extra_body_content %}
-		<script>
-			$(document).ready(function () {
-			    function calculateResult(number) {
-			        $.ajax({
-			        	// hard coded urls are bad
-			            // url: 'http://localhost:8000/difference?number=' + number,
-			            url: '{% url "problem_one" %}' + '?number=' + number,
-			            type: 'get',
-			            contentType: 'application/json',
-			            success: function(response) {
-			            	// fill table cells with results
-			            	var response_data = JSON.parse(response);
+{% block extra_body_content %}
+	{{ block.super }}
+	<script>
+		$(document).ready(function () {
+		    function calculateResult(number) {
+		        $.ajax({
+		        	// hard coded urls are bad
+		            // url: 'http://localhost:8000/difference?number=' + number,
+		            url: '{% url "problem_one" %}' + '?number=' + number,
+		            type: 'get',
+		            contentType: 'application/json',
+		            success: function(response) {
+		            	// fill table cells with results
+		            	var response_data = JSON.parse(response);
 
-			            	// check for existing entries for this number and remove
-			            	$("#request-table tr td:nth-child(1)").each(function () {
-			            		if (response_data.number == $(this).html()) {
-			            			$(this).closest('tr').css('display', 'None');
-			            		}
-							});
+		            	// check for existing entries for this number and remove
+		            	$("#request-table tr td:nth-child(1)").each(function () {
+		            		if (response_data.number == $(this).html()) {
+		            			$(this).closest('tr').css('display', 'None');
+		            		}
+						});
 
-			            	// prepend to top of the table
-			            	$('#headers').after(
-							    '<tr><td>' + 
-							    	response_data.number + '</td><td>' +
-							    	response_data.value  + '</td><td>' +
-							    	response_data.last_requested  +
-							    '</td></tr>');
-			            },
-			            error: function (jqXhr, textStatus, errorThrown) {
-			                console.log(errorThrown);
-			            }
-			        });
-			    };
+		            	// prepend to top of the table
+		            	$('#headers').after(
+						    '<tr><td>' + 
+						    	response_data.number + '</td><td>' +
+						    	response_data.value  + '</td><td>' +
+						    	response_data.last_requested  +
+						    '</td></tr>');
+		            },
+		            error: function (jqXhr, textStatus, errorThrown) {
+		                console.log(errorThrown);
+		            }
+		        });
+		    };
 
-			    $("#submit-button").click(function(){
-			        var number = $( "#id_calculator" ).val()
-			        calculateResult(number)
-		    	});
-
-		    	$("#solution-button").click(function(){
-			        if ($("#solution").is(":visible")) {
-						$("#solution").slideUp(500);
-						$("#solution-button span").text('Show solution');
-			        } else {
-			        	$("#solution").slideDown(500);
-			        	$("#solution-button span").text('Hide solution');
-			        }
-		    	});
-			});
-		</script>
-	{% endblock %}
+		    $("#submit-button").click(function(){
+		        var number = $( "#id_calculator" ).val()
+		        calculateResult(number)
+	    	});
+		});
+	</script>
+{% endblock %}

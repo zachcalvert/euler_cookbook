@@ -1,88 +1,64 @@
 {% extends 'problem.html' %}
-	
-	{% block description %}
-		<div class="problem-description">
-			<p>How many Sundays fell on the first of the month during the twentieth century (1 Jan 1901 to 31 Dec 2000)?</p>
-		</div>
-	{% endblock %}
 
-	{% block content %}
-		<div id="input-area">
-			<h3>Generalized solution</h3>
-			<p>Enter some values to find out some exciting and useless info!</p>
-			<label for="id_weekday">Day of Week</label>
-			<select id="id_weekday">
-				<option value="0">Sunday</option>
-				<option value="1">Monday</option>
-				<option value="2">Tuesday</option>
-				<option value="3">Wednesday</option>
-				<option value="4">Thursday</option>
-				<option value="5">Friday</option>
-				<option value="6">Saturday</option>
-			</select><br><br>
+{% block content %}
+	<div id="input-area">
+		<h3>Generalized solution</h3>
+		<p>Enter some values to find out some exciting and useless info!</p>
+		<label for="id_weekday">Day of Week</label>
+		<select id="id_weekday">
+			<option value="0">Sunday</option>
+			<option value="1">Monday</option>
+			<option value="2">Tuesday</option>
+			<option value="3">Wednesday</option>
+			<option value="4">Thursday</option>
+			<option value="5">Friday</option>
+			<option value="6">Saturday</option>
+		</select><br><br>
 
-			<label for="id_day_of_month">Day of Month</label>
-			<input type="text" id="id_day_of_month" value=""><br><br>
-			<label for="id_start_year">Start Year</label>
-			<input type="text" id="id_start_year" name="Start Year" value=""><br><br>
-			<label for="id_end_year">End Year</label>
-			<input type="text" id="id_end_year" name="End Year" value=""><br><br>
-			<input type="submit" id="submit-button" value="Calculate">
-			<p>Enter a number!</p>
-		</div>
+		<label for="id_day_of_month">Day of Month</label>
+		<input type="text" id="id_day_of_month" value=""><br><br>
+		<label for="id_start_year">Start Year</label>
+		<input type="text" id="id_start_year" name="Start Year" value=""><br><br>
+		<label for="id_end_year">End Year</label>
+		<input type="text" id="id_end_year" name="End Year" value=""><br><br>
+		<input type="submit" id="submit-button" value="Calculate">
+		<p>Enter a number!</p>
+	</div>
 
-		<div id="output-area" style="margin-top=140px!important;">
-			<p id="answer"></p>
-		</div>
+	<div id="output-area" style="margin-top=140px!important;">
+		<p id="answer"></p>
+	</div>
 
-		<code style="display:none;">
-			def how_many(weekday, day_of_month, start_year, end_year):<br>
-			&nbsp;&nbsp;count = 0<br>
-			&nbsp;&nbsp;for y in range(start_year, end_year + 1):<br>
-			&nbsp;&nbsp;&nbsp;&nbsp;for m in range(1, 13):<br>
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if day_of_week(y, m, day_of_month) == weekday:<br>
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count +=1<br>
-			&nbsp;&nbsp;return count<br><br>	
-		</code>
-	{% endblock %}
+{% endblock %}
 
-	{% block extra_body_content %}
-		<script>
-			$(document).ready(function () {
-			    function calculateResult() {
-			    	var params = {day_of_month: $('#id_day_of_month').val(), weekday: $('#id_weekday').find(":selected").val(),
-			    	start_year: $('#id_start_year').val(), end_year: $('#id_end_year').val()};
-			        $.ajax({
-			            url: '{% url "calculate_days" %}',
-			            type: 'POST',
-			            data: JSON.stringify(params),
-			            contentType: 'application/json',
-			            dataType: 'text',
-			            processData: false,
-			            success: function(response) {
-			            	console.log(response)
-			            	var response_data = JSON.parse(response);
-			            	$("#answer").append("Between " + response_data.start_year + " and " + response_data.end_year + ", the " + response_data.day_of_month + " of the month fell on a " + response_data.weekday + " " + response_data.num_days + " times!");
-			            },
-			            error: function (jqXhr, textStatus, errorThrown) {
-			                console.log(errorThrown);
-			            }
-			        });
-			    };
+{% block extra_body_content %}
+	{{ block.super }}
+	<script>
+		$(document).ready(function () {
+		    function calculateResult() {
+		    	var params = {day_of_month: $('#id_day_of_month').val(), weekday: $('#id_weekday').find(":selected").val(),
+		    	start_year: $('#id_start_year').val(), end_year: $('#id_end_year').val()};
+		        $.ajax({
+		            url: '{% url "calculate_days" %}',
+		            type: 'POST',
+		            data: JSON.stringify(params),
+		            contentType: 'application/json',
+		            dataType: 'text',
+		            processData: false,
+		            success: function(response) {
+		            	console.log(response)
+		            	var response_data = JSON.parse(response);
+		            	$("#answer").append("Between " + response_data.start_year + " and " + response_data.end_year + ", the " + response_data.day_of_month + " of the month fell on a " + response_data.weekday + " " + response_data.num_days + " times!");
+		            },
+		            error: function (jqXhr, textStatus, errorThrown) {
+		                console.log(errorThrown);
+		            }
+		        });
+		    };
 
-			    $("#submit-button").click(function(){
-			        calculateResult()
-		    	});
-
-		    	$("#solution-button").click(function(){
-			        if ($("#solution").is(":visible")) {
-						$("#solution").slideUp(500);
-						$("#solution-button span").text('Show solution');
-			        } else {
-			        	$("#solution").slideDown(500);
-			        	$("#solution-button span").text('Hide solution');
-			        }
-		    	});
-			});
-		</script>
-	{% endblock %}
+		    $("#submit-button").click(function(){
+		        calculateResult()
+	    	});
+		});
+	</script>
+{% endblock %}
