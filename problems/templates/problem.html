@@ -12,6 +12,23 @@
 	</div>
 {% endblock %}	
 
+{% block solution %}
+
+	{% if problem.solved %}
+		<button id="solution-button" style="top:320px";
+			<span class="ui-button-text">Show Solution</span>
+		</button>
+
+		<div id="solution">
+			<code>	
+				{{ problem.solution | safe }}
+			</code>
+		</div>
+	{% endif %}
+
+{% endblock %}
+
+
 {% block description %}
 	<div class="problem-description">
 		<p>{{ problem.description }}</p>
@@ -22,6 +39,9 @@
 
 {% block content %}
 
+{% endblock %}
+
+{% block footer %}
 {% endblock %}
 
 {% block extra_body_content %}

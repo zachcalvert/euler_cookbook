@@ -1,23 +1,16 @@
 {% extends 'problem.html' %}
 
 {% block description %}
-	<button id="solution-button" style="top:320px";
+<!-- 	<button id="solution-button" style="top:320px";
 		<span class="ui-button-text">Show Solution</span>
 	</button>
 
 	<div id="solution">
 		<p>We solve this with the following three functions:</p>
 		<code>	
-			def calculate_difference(n):<br>
-			&nbsp;&nbsp;&nbsp;return square_of_sums(n) - sum_of_squares(n)
-			<br><br>
-			def sum_of_squares(n):<br>
-			&nbsp;&nbsp;&nbsp;return sum([ i * i for i in xrange(1, n + 1) ])
-			<br><br>
-			def square_of_sums(n):<br>
-			&nbsp;&nbsp;&nbsp;return sum([ i for i in xrange(1, n + 1) ]) ** 2
+			{{ problem.solution | safe }}
 		</code>
-	</div>
+	</div> -->
 	<div class="problem-description">
 		<p>The sum of the squares of the first ten natural numbers is: <br><i>1<sup>2</sup> + 2<sup>2</sup> + ... + 10<sup>2</sup> = 385</i><br><br>The square of the sum of the first ten natural numbers is: <br><i>(1 + 2 + ... + 10)<sup>2</sup> = 552 = 3025</i><br><br>Hence the difference between the sum of the squares of the first ten natural numbers and the square of the sum is <i>3025 − 385 = 2640</i>.<br><p>Find the difference between the sum of the squares of the first one hundred natural numbers and the square of the sum.<br></p>
 	</div>

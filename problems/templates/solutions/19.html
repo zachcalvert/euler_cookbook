@@ -1,34 +1,6 @@
 {% extends 'problem.html' %}
 	
 	{% block description %}
-		<button id="solution-button">
-			<span class="ui-button-text">Show Solution</span>
-		</button>
-
-		<div id="solution">
-			<p>We solve this with the following three functions:</p>
-			<code>
-				def how_many_sundays():<br>
-				&nbsp;&nbsp;count = 0<br>
-				&nbsp;&nbsp;for y in range(1901, 2001):<br>
-				&nbsp;&nbsp;&nbsp;&nbsp;for m in range(1, 13):<br>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if day_of_week(y, m, day_of_month) == weekday:<br>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count +=1<br>
-				&nbsp;&nbsp;return count<br><br>
-
-				def day_of_week(year, month, day):<br>
-				&nbsp;&nbsp;m = mod(month-3, 4800)<br>
-				&nbsp;&nbsp;y = mod(year +m/12, 400)<br>
-				&nbsp;&nbsp;m %= 12<br>
-				&nbsp;&nbsp;return (y + y/4 - y/100 + (13*m +2)/5 + day + 2) % 7<br><br>
-
-				def mod(x, y):<br>
-				&nbsp;&nbsp;x %= y<br>
-				&nbsp;&nbsp;if (y > 0 and x < 0) or (y < 0 and x > 0):<br>
-				&nbsp;&nbsp;&nbsp;&nbsp;x += y<br>
-				&nbsp;&nbsp;return x	
-			</code>
-		</div>
 		<div class="problem-description">
 			<p>How many Sundays fell on the first of the month during the twentieth century (1 Jan 1901 to 31 Dec 2000)?</p>
 		</div>

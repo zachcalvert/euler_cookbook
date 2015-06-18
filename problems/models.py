@@ -7,6 +7,7 @@ class Problem(models.Model):
 	description = models.CharField(max_length=500)
 	link = models.URLField(help_text="URL on Project Euler")
 	solved = models.BooleanField(default=False)
+	solution = models.CharField(max_length=800, null=True, blank=True)
 
 	def get_absolute_url(self):
 		return reverse('euler_problem', kwargs={'problem_number': self.number})

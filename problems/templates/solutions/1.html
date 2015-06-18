@@ -1,20 +1,6 @@
 {% extends 'problem.html' %}
 
 {% block description %}
-	<button id="solution-button" style="top:250px";
-		<span class="ui-button-text">Show Solution</span>
-	</button>
-
-	<div id="solution">
-		<p>We solve this with the following function:</p>
-		<code>	
-			def multiples_of_three_and_five(n):<br>
-			"""<br>
-			returns the sum of all the multiples of three and 5 less than the integer input n.<br>
-			"""<br>
-			&nbsp;&nbsp;&nbsp;return sum([i for i in range(n) if i % 3 == 0 or i % 5 == 0])
-		</code>
-	</div>
 	<div class="problem-description">
 		<p>If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.<br> Find the sum of all the multiples of 3 or 5 below 1000.</p>
 	</div>

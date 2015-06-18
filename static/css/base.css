@@ -11,6 +11,7 @@ td, th {
   border: 1px solid #999;
   padding: 0.5rem;
   text-align: left;
+  background: #FFF;
 }
 
 td.solved {
@@ -27,7 +28,7 @@ td.solved {
 	width: 225px;
 	margin: -8px 0 19px -8px;
 	padding: 5px;
-	background: #65A7A1;
+	background: #444444;
 	text-align: center;
 }
 
@@ -37,9 +38,9 @@ td.solved {
 }
 
 .pagination {
-	text-align: left;
+	text-align: center;
 	width: 100%;
-	background: #444444;
+	background: #65A7A1;
 	margin: -19px 0 20px -8px;
 	padding:  15px;
 }
@@ -49,7 +50,7 @@ td.solved {
 	text-decoration: none;
 }
 .pagination a:hover {
-	color: #65A7A1;
+	color: #444444;
 }
 
 .table-of-contents {
@@ -71,7 +72,7 @@ td.solved {
 
 .problem-header {
 	margin: -19px 0 30px -8px;
-	background: #444444;
+	background: #65A7A1;
 	padding: 1px 0px 1px 25px;
 	width:  100%;
 }
@@ -83,7 +84,7 @@ td.solved {
 }
 
 .problem-header a:hover {
-	color: #65A7A1;
+	color: #444444;
 }
 
 .prev-problem {
@@ -134,11 +135,10 @@ td.solved {
 	text-align:center;
 	margin: 0px 0 0px -8px;
 	width: 100%;
-	background-color: #444444;
 	padding: 15px;
 }
 #footer a {
-	color: #FFFFFF;
+	color: #444444;
 	text-decoration: none;
 }
 #footer a:hover {
