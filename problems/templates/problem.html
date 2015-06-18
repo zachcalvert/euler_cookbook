@@ -3,17 +3,19 @@
 	
 {% block header %}
 	{{ block.super }}
-	<div id="header">
+	<div class="problem-header">
 		<h3>Problem {{ problem.number }}: {{ problem.title}}   <a href="{{ problem.link }}">(view on project euler)</a></h3>
 		{% if problem.number != 1 %}
-			<a href="{{ problem | previous_url }}">Previous Problem</a>
+			<a class="prev-problem" href="{{ problem | previous_url }}">Previous Problem</a>
 		{% endif %}
-		<a href="{{ problem | next_url }}">Next Problem</a>
+		<a class="next-problem" href="{{ problem | next_url }}">Next Problem</a>
 	</div>
 {% endblock %}	
 
 {% block description %}
-	<p>{{ problem.description }}</p>
+	<div class="problem-description">
+		<p>{{ problem.description }}</p>
+	</div>
 {% endblock %}
 
 

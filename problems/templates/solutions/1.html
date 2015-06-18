@@ -2,7 +2,7 @@
 
 {% block description %}
 	<div class="problem-description">
-		<p>The sum of the squares of the first ten natural numbers is: <br><i>1<sup>2</sup> + 2<sup>2</sup> + ... + 10<sup>2</sup> = 385</i><br><br>The square of the sum of the first ten natural numbers is: <br><i>(1 + 2 + ... + 10)<sup>2</sup> = 552 = 3025</i><br><br>Hence the difference between the sum of the squares of the first ten natural numbers and the square of the sum is <i>3025 − 385 = 2640</i>.<br><br></p>
+		<p>If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.<br> Find the sum of all the multiples of 3 or 5 below 1000.</p>
 	</div>
 {% endblock %}
 
@@ -12,31 +12,28 @@
 	</button>
 
 	<div id="solution">
-		<p>We solve this with the following three functions:</p>
+		<p>We solve this with the following function:</p>
 		<code>	
-			def calculate_difference(n):<br>
-			&nbsp;&nbsp;&nbsp;return square_of_sums(n) - sum_of_squares(n)
-			<br><br>
-			def sum_of_squares(n):<br>
-			&nbsp;&nbsp;&nbsp;return sum([ i * i for i in xrange(1, n + 1) ])
-			<br><br>
-			def square_of_sums(n):<br>
-			&nbsp;&nbsp;&nbsp;return sum([ i for i in xrange(1, n + 1) ]) ** 2
+			def multiples_of_three_and_five(n):<br>
+			"""<br>
+			returns the sum of all the multiples of three and 5 less than the integer input n.<br>
+			"""<br>
+			&nbsp;&nbsp;&nbsp;return sum([i for i in range(n) if i % 3 == 0 or i % 5 == 0])
 		</code>
 	</div>
 	<div id="input-area">
-		<p>Enter any number to see it in action!</p>
+		<p>Enter any number <i>n</i> to see it in action!</p>
 		<input type="text" id="id_calculator" value="">
 		<input type="submit" id="submit-button" value="Calculate">
 	</div>
 
 	<div id="output-area">
-		<table id="request-table" width="700px">
-			<caption>Calculation Log</caption>
+		<table id="request-table" width="700px" style="margin-bottom: 30px;">
+			<caption>Summation Log</caption>
 			<tbody>
 				<tr id="headers">
-					<td class="table-header">Number</td>
-					<td class="table-header">Difference</td>
+					<td class="table-header">n</td>
+					<td class="table-header">Sum of multiples less than n</td>
 					<td class="table-header">Timestamp</td>
 				</tr>
 				<tr id="placeholders">
@@ -56,7 +53,7 @@
 			        $.ajax({
 			        	// hard coded urls are bad
 			            // url: 'http://localhost:8000/difference?number=' + number,
-			            url: '{% url "get_sum_square_difference" %}' + '?number=' + number,
+			            url: '{% url "problem_one" %}' + '?number=' + number,
 			            type: 'get',
 			            contentType: 'application/json',
 			            success: function(response) {

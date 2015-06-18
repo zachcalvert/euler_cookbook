@@ -12,13 +12,13 @@
 		{% block head_css %}
 			<link rel="stylesheet" href="{{ STATIC_URL }}css/base.css"/>
 		{% endblock %}
-		<!-- avoid fake favicon requests -->
-		<link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
 	</head>
 
 	<body>
 		{% block header %}
-			<a href='{% url "site_home" %}'><h3>The Euler Cookbook</h3></a>
+			<div id="site-header">
+				<a href='{% url "site_home" %}'><h3>The Euler Cookbook</h3></a>
+			</div>
 		{% endblock %}
 
 		{% block description %}{% endblock %}
@@ -31,9 +31,9 @@
 
 			    {% for page in problems.paginator.page_range %}
 				    {% if problems.number == page %}
-				    	{{ page }}
+				    	<span id="current-page">{{ page }}</span> |
 				    {% else %}
-				    	<a href="?page={{ page }}">{{ page }}</a>
+				    	<a href="?page={{ page }}">{{ page }}</a> |
 				    {% endif %}
 				{% endfor %}
 
@@ -41,36 +41,42 @@
 			        <a href="?page={{ problems.next_page_number }}">Next</a>
 			    {% endif %}
 			 </ul>
+
+
 			<table>
 				<tr>
 					<td>#</td>
 					<td>Title</td>
 					<td>Solved</td>
 				</tr>
-			{% for problem in problems %}
-				<tr>
-					<td>{{ problem.number }}</td>
-					<td><a href="{{ problem.get_absolute_url }}">{{ problem.title}}</a></td>
-					<td>
-						{% if problem.solved %}
-							&#x2713;
-						{% endif %}
-					</td>
-				</tr>
-			{% endfor %}
+				{% for problem in problems %}
+					<tr>
+						<td>{{ problem.number }}</td>
+						<td><a href="{{ problem.get_absolute_url }}">{{ problem.title}}</a></td>
+						<td class="solved">
+							{% if problem.solved %}
+								&#x2713;
+							{% endif %}
+						</td>
+					</tr>
+				{% endfor %}
 			</table>
+			
 			<ul class="pagination nav navbar-nav">
 			    {% if problems.has_previous %}
-			            <li><a href="?page={{ problems.previous_page_number }}">Prev</a></li>
+			        <a href="?page={{ problems.previous_page_number }}">Prev</a>
 			    {% endif %}
 
 			    {% for page in problems.paginator.page_range %}
-				    {% if forloop.counter != 1 %} | {% endif %}
-				    <a href="?page={{ page }}">{{ page }}</a>
+				    {% if problems.number == page %}
+				    	<span id="current-page">{{ page }}</span> |
+				    {% else %}
+				    	<a href="?page={{ page }}">{{ page }}</a> |
+				    {% endif %}
 				{% endfor %}
 
 			    {% if problems.has_next %}
-			        <li> <a href="?page={{ problems.next_page_number }}">Next</a></li>
+			        <a href="?page={{ problems.next_page_number }}">Next</a>
 			    {% endif %}
 			 </ul>
 		{% endblock %}
