@@ -1,20 +1,6 @@
-{% extends 'base.html' %}
+{% extends 'problem.html' %}
 	
-	{% block header %}
-	{{ block.super }}
-		<div class="problem-description">
-			<h3>Problem 19: Counting sundays <a href="https://projecteuler.net/problem=19">(view on project euler)</a></h3>
-<!-- 			<p>You are given the following information, but you may prefer to do some research for yourself.</p>
-			<ul>
-				<li>1 Jan 1900 was a Monday.</li>
-				<li>Thirty days has september,<br>April, June, and November<br>All the rest have thirty-one,<br>saving February alone,<br>Which has twenty-eight, rain or shie.<br>And on leap years, twenty-nine</li>
-				<li>A leap year occurs on any year evenly divisible by 4, but not on a century unless it is divisible by 400.</li>
-			</ul> -->
-			<p>How many Sundays fell on the first of the month during the twentieth century (1 Jan 1901 to 31 Dec 2000)?</p>
-		</div>
-	{% endblock %}
-
-	{% block content %}
+	{% block description %}
 		<button id="solution-button">
 			<span class="ui-button-text">Show Solution</span>
 		</button>
@@ -43,6 +29,12 @@
 				&nbsp;&nbsp;return x	
 			</code>
 		</div>
+		<div class="problem-description">
+			<p>How many Sundays fell on the first of the month during the twentieth century (1 Jan 1901 to 31 Dec 2000)?</p>
+		</div>
+	{% endblock %}
+
+	{% block content %}
 		<div id="input-area">
 			<h3>Generalized solution</h3>
 			<p>Enter some values to find out some exciting and useless info!</p>
@@ -69,7 +61,7 @@
 
 		<div id="output-area" style="margin-top=140px!important;">
 			<p id="answer"></p>
-		<div>
+		</div>
 
 		<code style="display:none;">
 			def how_many(weekday, day_of_month, start_year, end_year):<br>

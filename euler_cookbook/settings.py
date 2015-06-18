@@ -38,7 +38,6 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 
     'problems',
-    'counting_sundays',
     'sum_square_difference',
 )
 

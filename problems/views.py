@@ -1,6 +1,7 @@
 import json
 from datetime import datetime
 
+from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext, TemplateDoesNotExist
 from django.template.loader import get_template
@@ -50,13 +51,6 @@ def euler_problem(request, problem_number):
 
 def problem_one(request):
 	"""
-	Simple view that expects a request in the format:
-
-	http://localhost:8000/difference?number=10 , where 10 is any natural number
-
-	Takes the given number and tries to find it in the db.
-	If the number is not found, the value is calculated and
-	the corresponding db entry is saved.
 	"""
 
 	number = request.GET.get('number', None)
@@ -79,3 +73,37 @@ def problem_one(request):
 		'last_requested': str(datetime.now())
 	}
 	return HttpResponse(json.dumps(content))
+
+
+# problem 19
+
+weekdays = (
+	(0, 'Sunday'),
+	(1, 'Monday'),
+	(2, 'Tuesday'),
+	(3, 'Wednesday'),
+	(4, 'Thursday'),
+	(5, 'Friday'),
+	(6, 'Saturday'),
+)
+
+@csrf_exempt
+def calculate_days(request):
+	body = json.loads(request.body)
+	try:
+		weekday = int(body.get('weekday'))
+		day_of_month = int(body.get('day_of_month'))
+		start_year = int(body.get('start_year'))
+		end_year = int(body.get('end_year'))
+
+	except KeyError:
+		return HttpResponse('form error')
+
+	d = {
+		'weekday': weekdays[weekday][1],
+		'day_of_month': day_of_month,
+		'start_year': start_year,
+		'end_year': end_year
+	}
+	d['num_days'] = utils.how_many(weekday, day_of_month, start_year, end_year)
+	return HttpResponse(json.dumps(d))
