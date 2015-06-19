@@ -1,6 +1,7 @@
 body {
     font-family: "Lucida Sans Unicode";
     background: #E1E3E4;
+    margin:  0px;
 }
 
 table {
@@ -22,17 +23,19 @@ td.solved {
 	font-weight: bold;
 }
 
+/* site-wide header stuff */
+
 #site-header {
-	width: 102%;
+	width: 100%;
 	float: left;
 	background:  #FFF;
 	margin: 0px 0px 15px 0px;
-	height: 87px;
+	height: 76px;
 }
 
 #site-header-logo {
 	width: 225px;
-	margin: 11px 0 19px -8px;
+	margin: 0px 0 0px 0px;
 	padding: 5px;
 	background: #444444;
 	text-align: center;
@@ -46,7 +49,7 @@ td.solved {
 
 #site-header-menu {
 	float: right;
-	margin: 25px 4%;
+	margin: 18px 5%;
 	font-size: 48px;
 	color: #444444;
 }
@@ -81,13 +84,17 @@ ul.hmenu a:hover {
 	color: #65A7A1!important;
 }
 
+
+/* home page nav */
 .pagination {
 	text-align: center;
 	width: 100%;
 	background: #65A7A1;
-	margin: -19px 0 20px -8px;
+	margin: 0;
 	padding: 15px;
 }
+
+ul.pagination.nav.navbar-nav {}
 .pagination a {
 	margin: 0 10px;
 	color: #FFF;
@@ -109,10 +116,20 @@ ul.hmenu a:hover {
 	color: #65A7A1;
 }
 
-
 #current-page {
 	margin: 0 10px;
 }
+
+.bottom-pagination a {
+	color: #444444;
+	text-decoration: none;
+}
+.bottom-pagination a:hover {
+	color: #65a7a1;
+}
+
+
+/* problem page stuff */
 
 .problem-header {
 	margin: -19px 0 30px -8px;
@@ -167,13 +184,6 @@ ul.hmenu a:hover {
 	padding:  15px;
 }
 
-.bottom-pagination a {
-	color: #444444;
-	text-decoration: none;
-}
-.bottom-pagination a:hover {
-	color: #65a7a1;
-}
 
 #footer {
 	text-align:center;

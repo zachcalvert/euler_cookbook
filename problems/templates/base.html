@@ -26,8 +26,8 @@
 					<a href="#"><i class="fa fa-bars"></i></a>
 					<ul class="hmenu">
 	                    <li><a href="#">Contribute</a></li>
-	                    <li><a href="#">View on GitHub</a></li>
-	                    <li><a href="#">About</a></li>
+	                    <li><a href="https://github.com/zachcalvert/euler_cookbook">View on GitHub</a></li>
+	                    <li><a href='{% url "about" %}'>About</a></li>
 	                </ul>
 				</div>
 			</div>
@@ -38,23 +38,23 @@
 		{% block description %}{% endblock %}
 
 		{% block content %}
-				<ul class="pagination nav navbar-nav">
-				    {% if problems.has_previous %}
-				        <a href="?page={{ problems.previous_page_number }}">Prev</a>
-				    {% endif %}
+			<ul class="pagination nav navbar-nav">
+			    {% if problems.has_previous %}
+			        <a href="?page={{ problems.previous_page_number }}">Prev</a>
+			    {% endif %}
 
-				    {% for page in problems.paginator.page_range %}
-					    {% if problems.number == page %}
-					    	<span id="current-page">{{ page }}</span> |
-					    {% else %}
-					    	<a href="?page={{ page }}">{{ page }}</a> |
-					    {% endif %}
-					{% endfor %}
-
-				    {% if problems.has_next %}
-				        <a href="?page={{ problems.next_page_number }}">Next</a>
+			    {% for page in problems.paginator.page_range %}
+				    {% if problems.number == page %}
+				    	<span id="current-page">{{ page }}</span> |
+				    {% else %}
+				    	<a href="?page={{ page }}">{{ page }}</a> |
 				    {% endif %}
-				 </ul>
+				{% endfor %}
+
+			    {% if problems.has_next %}
+			        <a href="?page={{ problems.next_page_number }}">Next</a>
+			    {% endif %}
+			 </ul>
 
 			<table class="table-of-contents">
 				<tr>

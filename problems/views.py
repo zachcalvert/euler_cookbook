@@ -34,6 +34,12 @@ def site_home(request, template_name = 'base.html'):
 	return render_to_response(template_name, context_instance=RequestContext(request, context))
 
 
+
+def about(request, template_name='about.html'):
+	context = {}
+	return render_to_response(template_name, context_instance=RequestContext(request, context))
+
+
 def euler_problem(request, problem_number):
 	template_name = "solutions/{}.html".format(problem_number)
 	try:
@@ -50,6 +56,12 @@ def euler_problem(request, problem_number):
 	return render_to_response(template_name, context_instance=RequestContext(request, context))
 
 
+
+
+
+"""
+Ajax views for returning calculated values to the problem pages
+"""
 
 def problem_one(request):
 	"""
