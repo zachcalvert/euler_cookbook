@@ -132,7 +132,7 @@ ul.pagination.nav.navbar-nav {}
 /* problem page stuff */
 
 .problem-header {
-	margin: -19px 0 30px -8px;
+	margin: 0px 0 30px 0px;
 	background: #65A7A1;
 	padding: 1px 0px 1px 25px;
 	width:  100%;
@@ -161,7 +161,7 @@ ul.pagination.nav.navbar-nav {}
 }
 
 .problem-description {
-	margin:60px 40px;
+	margin: 0px 40px;
 }
 
 #input-area {
@@ -183,7 +183,6 @@ ul.pagination.nav.navbar-nav {}
 	float: right;
 	padding:  15px;
 }
-
 
 #footer {
 	text-align:center;

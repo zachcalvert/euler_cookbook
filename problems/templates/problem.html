@@ -45,6 +45,7 @@
 {% endblock %}
 
 {% block extra_body_content %}
+	{{ block.super }}
 	<script>
 		$(document).ready(function () {
 			$("#solution-button").click(function(){

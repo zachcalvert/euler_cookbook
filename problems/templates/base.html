@@ -97,8 +97,10 @@
 		            $('#site-header-menu a').click(function(){
 		                if ($("ul.hmenu").is(":visible")) {
 		                    $("ul.hmenu").slideUp(200);
+		                    $('#site-header-menu a').css("color","#444444");
 		                } else {
 		                    $("ul.hmenu").slideDown(200);
+		                    $('#site-header-menu a').css("color","#65a7a1");
 		                }
 		            });
 			    });
