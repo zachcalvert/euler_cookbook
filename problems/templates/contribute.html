@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+
+	<form id="contribute-form" class="fancy" method="post">{% csrf_token %}
+	    <fieldset>
+			{{ form.as_ul }}
+		</fieldset>
+        <li>
+		    {% block form-button %}
+		        <input class="button blue small" type="submit" value="{% trans 'Submit' %}" />
+		    {% endblock %}
+		</li>
+	</form>
+
+{% endblock %}

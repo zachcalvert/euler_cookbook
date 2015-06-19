@@ -184,6 +184,18 @@ ul.pagination.nav.navbar-nav {}
 	padding:  15px;
 }
 
+
+
+#contribute-form {
+	list-style: none;
+  	padding: 20px;
+}
+
+#contribute-form li {
+	padding: 5px;
+}
+
+
 #footer {
 	text-align:center;
 	margin: 0px 0 0px -8px;

@@ -15,3 +15,9 @@ class Problem(models.Model):
 	def __unicode__(self):
 		return '#{0}: {1}'.format(self.number, self.title)
 
+
+class Contribution(models.Model):
+	submitted = models.DateTimeField(auto_now_add=True)
+	problem = models.ForeignKey(Problem)
+	solution = models.CharField(max_length=500)
+	submitted_by = models.CharField(max_length=30)

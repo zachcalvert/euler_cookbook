@@ -25,12 +25,19 @@
 				<div id="site-header-menu">
 					<a href="#"><i class="fa fa-bars"></i></a>
 					<ul class="hmenu">
-	                    <li><a href="#">Contribute</a></li>
-	                    <li><a href="https://github.com/zachcalvert/euler_cookbook">View on GitHub</a></li>
+	                    <li><a href='{% url "contribute" %}'>Contribute</a></li>
 	                    <li><a href='{% url "about" %}'>About</a></li>
+	                    <li><a href="https://github.com/zachcalvert/euler_cookbook">View on GitHub</a></li>
 	                </ul>
 				</div>
 			</div>
+			{% if messages %}
+				<ul class="messages">
+				    {% for message in messages %}
+				    	<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+				    {% endfor %}
+				</ul>
+			{% endif %}
 		{% endblock %}
 
 

@@ -2,14 +2,18 @@ import json
 from datetime import datetime
 
 from django.views.decorators.csrf import csrf_exempt
-from django.shortcuts import render_to_response, get_object_or_404
+from django.shortcuts import render_to_response, get_object_or_404, redirect
 from django.template import RequestContext, TemplateDoesNotExist
 from django.template.loader import get_template
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponse
+from django.contrib import messages
+from django.utils.translation import ugettext_lazy as _
 
-from problems.models import Problem
+from problems.models import Problem, Contribution
 from problems import utils
+
+from forms import ContributionForm
 
 def site_home(request, template_name = 'base.html'):
 
@@ -38,6 +42,33 @@ def site_home(request, template_name = 'base.html'):
 def about(request, template_name='about.html'):
 	context = {}
 	return render_to_response(template_name, context_instance=RequestContext(request, context))
+
+
+def contribute(request, template_name='contribute.html'):
+	title = 'Contribute'
+
+	if request.method == 'POST':
+		form = ContributionForm(data=request.POST)
+		if form.is_valid():
+			problem_id = form['problem'].value()
+			problem = Problem.objects.get(id=problem_id)
+			submitted_by = form['name']
+			solution = form['solution']
+			Contribution.objects.create(submitted_by=submitted_by, problem=problem, solution=solution)
+
+			messages.add_message(request, messages.SUCCESS,
+				_('Thanks for contributing! Your solution will be reviewed as soon as possible.'))
+
+			return redirect('site_home')
+	else:
+		form = ContributionForm(initial={})
+
+	context = {}
+	context['form'] = form
+	context['title'] = title
+
+	return render_to_response(template_name,
+		context_instance=RequestContext(request, context))
 
 
 def euler_problem(request, problem_number):
