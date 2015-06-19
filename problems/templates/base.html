@@ -4,6 +4,7 @@
             {% block page_title %} 
                 The Euler Cookbook
             {% endblock %}
+            <i class="fa fa-bars"></i>
         </title>
         
         {% block head_js %}
@@ -11,14 +12,20 @@
 		{% endblock %}
 		{% block head_css %}
 			<link rel="stylesheet" href="{{ STATIC_URL }}css/base.css"/>
+			<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 		{% endblock %}
 	</head>
 
 	<body>
 		{% block header %}
-			<div id="site-header">
+		<div id="site-header">
+			<div id="site-header-logo">
 				<a href='{% url "site_home" %}'><h3>The Euler Cookbook</h3></a>
 			</div>
+			<div id="site-header-menu">
+				<i class="fa fa-bars"></i>
+			</div>
+		</div>
 		{% endblock %}
 
 
@@ -26,24 +33,23 @@
 		{% block description %}{% endblock %}
 
 		{% block content %}
-			<ul class="pagination nav navbar-nav">
-			    {% if problems.has_previous %}
-			        <a href="?page={{ problems.previous_page_number }}">Prev</a>
-			    {% endif %}
-
-			    {% for page in problems.paginator.page_range %}
-				    {% if problems.number == page %}
-				    	<span id="current-page">{{ page }}</span> |
-				    {% else %}
-				    	<a href="?page={{ page }}">{{ page }}</a> |
+				<ul class="pagination nav navbar-nav">
+				    {% if problems.has_previous %}
+				        <a href="?page={{ problems.previous_page_number }}">Prev</a>
 				    {% endif %}
-				{% endfor %}
 
-			    {% if problems.has_next %}
-			        <a href="?page={{ problems.next_page_number }}">Next</a>
-			    {% endif %}
-			 </ul>
+				    {% for page in problems.paginator.page_range %}
+					    {% if problems.number == page %}
+					    	<span id="current-page">{{ page }}</span> |
+					    {% else %}
+					    	<a href="?page={{ page }}">{{ page }}</a> |
+					    {% endif %}
+					{% endfor %}
 
+				    {% if problems.has_next %}
+				        <a href="?page={{ problems.next_page_number }}">Next</a>
+				    {% endif %}
+				 </ul>
 
 			<table class="table-of-contents">
 				<tr>
@@ -76,7 +82,7 @@
 
 		{% block footer %}
 			<div id="footer">
-				<a href="https://github.com/zachcalvert/euler_cookbook">View on GitHub</a>
+				<a href="https://github.com/zachcalvert/euler_cookbook">View on GitHub</a><br>
 			</div>
 		{% endblock %}
 
