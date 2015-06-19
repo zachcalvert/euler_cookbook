@@ -1,5 +1,5 @@
 """
-Problem 1: 
+Problem 1: Multiples of Three and Five
 """
 def multiples_of_three_and_five(n):
 	"""

@@ -18,14 +18,19 @@
 
 	<body>
 		{% block header %}
-		<div id="site-header">
-			<div id="site-header-logo">
-				<a href='{% url "site_home" %}'><h3>The Euler Cookbook</h3></a>
+			<div id="site-header">
+				<div id="site-header-logo">
+					<a href='{% url "site_home" %}'><h3>The Euler Cookbook</h3></a>
+				</div>
+				<div id="site-header-menu">
+					<a href="#"><i class="fa fa-bars"></i></a>
+					<ul class="hmenu">
+	                    <li><a href="#">Contribute</a></li>
+	                    <li><a href="#">View on GitHub</a></li>
+	                    <li><a href="#">About</a></li>
+	                </ul>
+				</div>
 			</div>
-			<div id="site-header-menu">
-				<i class="fa fa-bars"></i>
-			</div>
-		</div>
 		{% endblock %}
 
 
@@ -86,7 +91,19 @@
 			</div>
 		{% endblock %}
 
-		{% block extra_body_content %}{% endblock %}
+		{% block extra_body_content %}
+			<script>
+			    $(document).ready(function () {
+		            $('#site-header-menu a').click(function(){
+		                if ($("ul.hmenu").is(":visible")) {
+		                    $("ul.hmenu").slideUp(200);
+		                } else {
+		                    $("ul.hmenu").slideDown(200);
+		                }
+		            });
+			    });
+			</script>
+		{% endblock %}
 	</body>
 
 </html>

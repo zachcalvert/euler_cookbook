@@ -51,6 +51,36 @@ td.solved {
 	color: #444444;
 }
 
+#site-header-menu a, a:hover {
+	color: #444444;
+}
+
+ul.hmenu {
+  display: none;
+  position: absolute;
+  top: 76px;
+  right: 0px;
+  width: auto;
+  height: auto;
+  background: #444444;
+  margin: 0;
+  padding: 10px;
+  text-align: left;
+  line-height: 40px;
+  font-size: 18px;
+  list-style: none;
+  z-index: 5;
+}
+
+ul.hmenu a {
+	color: #FFF!important;
+	text-decoration: none;
+}
+
+ul.hmenu a:hover {
+	color: #65A7A1!important;
+}
+
 .pagination {
 	text-align: center;
 	width: 100%;
