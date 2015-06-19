@@ -11,7 +11,7 @@ class Command(BaseCommand):
     Management command to load problem info from project euler site into the db
     """
     def handle(self, *args, **options):
-    	for i in range(247,510):
+    	for i in range(1,510):
     		url = 'https://projecteuler.net/problem={}'.format(i)
     		response = requests.get(url, verify=False)
 

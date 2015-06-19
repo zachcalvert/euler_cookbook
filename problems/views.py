@@ -49,6 +49,8 @@ def euler_problem(request, problem_number):
 
 	return render_to_response(template_name, context_instance=RequestContext(request, context))
 
+
+
 def problem_one(request):
 	"""
 	"""
@@ -75,8 +77,30 @@ def problem_one(request):
 	return HttpResponse(json.dumps(content))
 
 
-# problem 19
+"""
+Problem 6: Sum Square Difference
 
+Simple view that expects a request in the format:
+http://localhost:8000/difference?number=10 , where 10 is any natural number
+"""
+def get_sum_square_difference(request):
+
+	n = int(request.GET.get('number', None))
+
+	value = utils.calculate_difference(n)
+
+	content = {
+		'number': n,
+		'value': value,
+		'last_requested': str(datetime.now())
+	}
+	
+	return HttpResponse(json.dumps(content))
+
+
+"""
+Problem 19: Counting Sundays
+"""
 weekdays = (
 	(0, 'Sunday'),
 	(1, 'Monday'),
@@ -99,11 +123,11 @@ def calculate_days(request):
 	except KeyError:
 		return HttpResponse('form error')
 
-	d = {
+	content = {
 		'weekday': weekdays[weekday][1],
 		'day_of_month': day_of_month,
 		'start_year': start_year,
 		'end_year': end_year
 	}
-	d['num_days'] = utils.how_many(weekday, day_of_month, start_year, end_year)
-	return HttpResponse(json.dumps(d))
+	content['num_days'] = utils.how_many(weekday, day_of_month, start_year, end_year)
+	return HttpResponse(json.dumps(content))

@@ -5,5 +5,4 @@ from django.contrib import admin
 urlpatterns = [
 	url(r'^', include('problems.urls')),
 	url(r'^admin/', include(admin.site.urls)),
-    url(r'^sum_square_difference/', include('sum_square_difference.urls')),
 ]

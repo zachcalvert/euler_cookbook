@@ -24,7 +24,7 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ['.eulerscookbook.org',]
 
 
 # Application definition
@@ -38,7 +38,6 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 
     'problems',
-    'sum_square_difference',
 )
 
 MIDDLEWARE_CLASSES = (

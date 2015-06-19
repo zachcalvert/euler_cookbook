@@ -4,7 +4,7 @@
 {% block header %}
 	{{ block.super }}
 	<div class="problem-header">
-		<h3>Problem {{ problem.number }}: {{ problem.title}}&nbsp;&nbsp;&nbsp;<a href="{{ problem.link }}">view on project euler</a></h3>
+		<h3>Problem {{ problem.number }}: {{ problem.title}}&nbsp;&nbsp;&nbsp;<a style="font-size:14px" href="{{ problem.link }}">view on project euler</a></h3>
 		{% if problem.number != 1 %}
 			<a class="prev-problem" href="{{ problem | previous_url }}"> <&nbsp;&nbsp;&nbsp;Previous</a>
 		{% endif %}

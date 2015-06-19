@@ -1,5 +1,6 @@
-# helper functions
-
+"""
+Problem 1: 
+"""
 def multiples_of_three_and_five(n):
 	"""
 	returns the sum of all the multiples of three and 5 less than the integer input n.
@@ -7,10 +8,23 @@ def multiples_of_three_and_five(n):
 	return sum([i for i in range(n) if i % 3 == 0 or i % 5 == 0])
 
 
+"""
+Problem 6: Sum Square Difference
+"""
+def calculate_difference(n):
+	return square_of_sums(n) - sum_of_squares(n)
 
-# problem 19
-# translated from: http://www.javaproblems.com/2013/11/project-euler-problem-19-counting_27.html
+def sum_of_squares(n):
+	return sum([ i * i for i in xrange(1, n + 1) ])
 
+def square_of_sums(n):
+	return sum([ i for i in xrange(1, n + 1) ]) ** 2
+
+
+"""
+Problem 19: Counting Sundays
+translated from: http://www.javaproblems.com/2013/11/project-euler-problem-19-counting_27.html
+"""
 def how_many(weekday, day_of_month, start_year, end_year):
 	count = 0
 	for y in range(start_year, end_year + 1):
