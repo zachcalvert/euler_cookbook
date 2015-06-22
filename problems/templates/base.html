@@ -96,12 +96,21 @@
 				{% endfor %}
 			</table>
 			
-			<ul class="bottom-pagination nav navbar-nav">
+			<ul class="pagination nav navbar-nav">
 			    {% if problems.has_previous %}
 			        <a href="?page={{ problems.previous_page_number }}">Prev</a>
 			    {% endif %}
+
+			    {% for page in problems.paginator.page_range %}
+				    {% if problems.number == page %}
+				    	<span id="current-page">{{ page }}</span> |
+				    {% else %}
+				    	<a href="?page={{ page }}">{{ page }}</a> |
+				    {% endif %}
+				{% endfor %}
+
 			    {% if problems.has_next %}
-			        <a style="float:right; margin-right: 20px;"href="?page={{ problems.next_page_number }}">Next</a>
+			        <a href="?page={{ problems.next_page_number }}">Next</a>
 			    {% endif %}
 			 </ul>
 		{% endblock %}

@@ -1,3 +1,9 @@
+html, body {
+	margin: 0px;
+	padding: 0px;
+	border: 0px;
+}
+
 body {
     font-family: "Lucida Sans Unicode";
     background: #E1E3E4;
@@ -29,7 +35,7 @@ td.solved {
 	width: 100%;
 	float: left;
 	background:  #FFF;
-	margin: 0px 0px 0px 0px;
+	margin: 0px 0px 15px 0px;
 	height: 76px;
 }
 
@@ -96,10 +102,13 @@ ul.hmenu a:hover {
 	width: 100%;
 	background: #65A7A1;
 	margin: 0px;
-	padding: 15px;
+	padding: 0px;
 }
 
-ul.pagination.nav.navbar-nav {}
+ul.pagination.nav.navbar-nav {
+    padding-bottom: 13px;
+    padding-top: 13px;
+}
 .pagination a {
 	margin: 0 10px;
 	color: #FFF;
@@ -201,9 +210,8 @@ ul.pagination.nav.navbar-nav {}
 
 #footer {
 	text-align:center;
-	margin: 0px 0 0px -8px;
 	width: 100%;
-	padding: 15px;
+	margin: 10px 15px 15px 0;
 }
 #footer a {
 	color: #444444;
