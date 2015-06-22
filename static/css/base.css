@@ -119,8 +119,12 @@ ul.pagination.nav.navbar-nav {
 	color: #444444;
 }
 
+/*home page table*/
+
 .table-of-contents {
 	margin: 30px;
+	width: 80%;
+	max-width: 700px;
 }
 .table-of-contents a {
 	color: #444444;
@@ -133,14 +137,6 @@ ul.pagination.nav.navbar-nav {
 
 #current-page {
 	margin: 0 10px;
-}
-
-.bottom-pagination a {
-	color: #444444;
-	text-decoration: none;
-}
-.bottom-pagination a:hover {
-	color: #65a7a1;
 }
 
 
@@ -226,5 +222,4 @@ ul.pagination.nav.navbar-nav {
     	#welcome-message {
     		display: none;
     	}
-
 }
