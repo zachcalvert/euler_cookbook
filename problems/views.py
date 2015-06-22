@@ -1,5 +1,6 @@
 import json
 from datetime import datetime
+from rest_framework.renderers import JSONRenderer
 
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render_to_response, get_object_or_404, redirect
@@ -12,6 +13,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from problems.models import Problem, Contribution
 from problems import utils
+from problems.serializers import ProblemSerializer
 
 from forms import ContributionForm
 
@@ -69,6 +71,27 @@ def contribute(request, template_name='contribute.html'):
 
 	return render_to_response(template_name,
 		context_instance=RequestContext(request, context))
+
+
+"""
+API endpoint to retrieve 
+"""
+def get_problem(request):
+
+	number = request.GET.get('number', '')
+
+	try:
+		p = Problem.objects.get(number=number)
+    
+	except Problem.DoesNotExist:
+		return HttpResponse(status_code=404)
+		
+	serializer = ProblemSerializer(p)
+	content = JSONRenderer().render(serializer.data)
+	return HttpResponse(content)
+
+
+
 
 
 def euler_problem(request, problem_number):
