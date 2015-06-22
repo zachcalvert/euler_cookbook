@@ -55,7 +55,8 @@ td.solved {
 
 #welcome-message {
 	float:right;
-	margin: 30px 0 0 0;
+	margin: 44px 0 0 0;
+	font-size: 12px;
 }
 
 #site-header-menu {
@@ -207,7 +208,6 @@ ul.pagination.nav.navbar-nav {
 	padding: 5px;
 }
 
-
 #footer {
 	text-align:center;
 	width: 100%;
@@ -219,4 +219,12 @@ ul.pagination.nav.navbar-nav {
 }
 #footer a:hover {
 	color: #65A7A1;
+}
+
+@media screen
+    and (max-width: 600px)  {
+    	#welcome-message {
+    		display: none;
+    	}
+
 }
