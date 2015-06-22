@@ -28,7 +28,21 @@
 	                    <li><a href='{% url "contribute" %}'>Contribute</a></li>
 	                    <li><a href='{% url "about" %}'>About</a></li>
 	                    <li><a href="https://github.com/zachcalvert/euler_cookbook">View on GitHub</a></li>
+	                    <li>
+	                    	{% if user.is_authenticated %}
+							    <a href='{% url "logout" %}'>Logout</a>
+							{% else %}
+							    <a href='{% url "login" %}'>Login</a>
+							{% endif %}
+						</li>
 	                </ul>
+				</div>
+				<div id="welcome-message">
+					Welcome, {% if user.is_authenticated %}
+							    {{ user.username }}
+							{% else %}
+							    Guest
+							{% endif %}
 				</div>
 			</div>
 			{% if messages %}
