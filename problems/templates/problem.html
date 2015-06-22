@@ -15,9 +15,15 @@
 {% block solution %}
 
 	{% if problem.solved %}
-		<button id="solution-button" style="top:320px";
-			<span class="ui-button-text">Show Solution</span>
-		</button>
+		{% if user.is_authenticated %}
+			<button id="solution-button" style="top:320px";
+				<span class="ui-button-text">Show Solution</span>
+			</button>
+		{% else %}
+			<div id="unsolution-button" style="top:320px; text-align: center; color: red;";
+				<span class="ui-button-text">Log in to see Solution!</span>
+			</div>
+		{% endif %}
 
 		<div id="solution">
 			<code>	

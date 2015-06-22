@@ -4,12 +4,14 @@
 	{% if form.errors %}
 		<p>Your username and password didn't match. Please try again.</p>
 	{% endif %}
-	<form method="post" action="{% url 'login' %}">
-		{% csrf_token %}
-		<table>
-			{{ form }}
-		</table>
-		<input type="submit" value="login" />
-		<input type="hidden" name="next" value="/" />
-	</form>
+	<div id="login-form">
+		<form method="post" action="{% url 'login' %}">
+			{% csrf_token %}
+			<table>
+				{{ form }}
+			</table>
+			<input id="login-button" type="submit" value="login" />
+			<input type="hidden" name="next" value="/" />
+		</form>
+	</div>
 {% endblock %}

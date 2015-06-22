@@ -140,6 +140,14 @@ ul.pagination.nav.navbar-nav {
 }
 
 
+/* login page */
+#login-form {
+	padding: 20px;
+}
+#login-button {
+	margin: 10px;
+}
+
 /* problem page stuff */
 
 .problem-header {
