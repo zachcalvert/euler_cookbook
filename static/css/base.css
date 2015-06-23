@@ -180,7 +180,7 @@ ul.pagination.nav.navbar-nav {
 }
 
 .problem-description {
-	margin: 0px 40px;
+	margin: 0 15%;
 }
 
 #input-area {
@@ -191,6 +191,13 @@ ul.pagination.nav.navbar-nav {
 #output-area {
 	float: left;
 	margin: 10px 0 30px 30px;
+	width: 65%;
+}
+
+#request-table {
+	margin-bottom: 30px;
+	max-width: 700px;
+	width: auto;
 }
 
 #solution {
