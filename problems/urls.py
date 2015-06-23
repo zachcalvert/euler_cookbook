@@ -9,7 +9,7 @@ urlpatterns = [
 	url(r'^problem$', views.get_problem, name='get_problem'),
 
 	url(r'^(?P<problem_number>\d+)(\..+)?/$', views.euler_problem, name='euler_problem'),
-	url(r'^problem_one$', views.problem_one, name='problem_one'),
+	url(r'^multiples_of_three_and_five$', views.get_multiples_of_three_and_five, name='get_multiples_of_three_and_five'),
 	url(r'^even_fibonacci_numbers$', views.get_even_fibonacci_numbers, name='get_even_fibonacci_numbers'),
 	url(r'^sum_square_difference$', views.get_sum_square_difference, name='get_sum_square_difference'),
 	url(r'^how_many_days/', views.calculate_days, name='calculate_days'),

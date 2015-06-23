@@ -113,7 +113,7 @@ def euler_problem(request, problem_number):
 Ajax views for returning calculated values to the problem pages
 """
 
-def problem_one(request):
+def get_multiples_of_three_and_five(request):
 	"""
 	"""
 	number = request.GET.get('number', None)
