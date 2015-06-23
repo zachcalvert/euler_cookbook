@@ -8,7 +8,7 @@
 	</div>
 
 	<div id="output-area">
-		<table id="request-table" width="700px" style="margin-bottom: 30px;">
+		<table id="request-table">
 			<caption>Summation Log</caption>
 			<tbody>
 				<tr id="headers">
@@ -32,9 +32,7 @@
 		$(document).ready(function () {
 		    function calculateResult(number) {
 		        $.ajax({
-		        	// hard coded urls are bad
-		            // url: 'http://localhost:8000/difference?number=' + number,
-		            url: '{% url "problem_one" %}' + '?number=' + number,
+		            url: '{% url "get_multiples_of_three_and_five" %}' + '?number=' + number,
 		            type: 'get',
 		            contentType: 'application/json',
 		            success: function(response) {
