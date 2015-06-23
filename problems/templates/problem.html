@@ -3,8 +3,8 @@
 	
 {% block header %}
 	{{ block.super }}
-	<div class="problem-header">
-		<h3>Problem {{ problem.number }}: {{ problem.title}}&nbsp;&nbsp;&nbsp;<a style="font-size:14px" href="{{ problem.link }}">view on project euler</a></h3>
+	<div class="pagination">
+		<span class="headerthree">Problem {{ problem.number }}: {{ problem.title}}&nbsp;&nbsp;&nbsp;<a style="font-size:14px" href="{{ problem.link }}">view on project euler</a></span>
 		{% if problem.number != 1 %}
 			<a class="prev-problem" href="{{ problem | previous_url }}"> <&nbsp;&nbsp;&nbsp;Previous</a>
 		{% endif %}
@@ -16,14 +16,33 @@
 
 	{% if problem.solved %}
 		{% if user.is_authenticated %}
-			<button id="solution-button" style="top:320px";
-				<span class="ui-button-text">Show Solution</span>
-			</button>
+			<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#solutionModal">Show Solution</button>
 		{% else %}
 			<div id="login-prompt" style="top:320px; text-align: center; color: #65A7A1;">
 				<a href='{% url "login" %}'>Log in to see the Solution!</a>
 			</div>
 		{% endif %}
+
+		<!-- Modal -->
+		<div id="solutionModal" class="modal fade" role="dialog">
+		  <div class="modal-dialog">
+
+		    <!-- Modal content-->
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal">&times;</button>
+		        <h4 class="modal-title">{{ problem }}</h4>
+		      </div>
+		      <div class="modal-body">
+		        <p>{{ problem.solution | safe }}</p>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		      </div>
+		    </div>
+
+		  </div>
+		</div>
 
 		<div id="solution">
 			<code>	

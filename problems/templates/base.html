@@ -8,11 +8,13 @@
         
         {% block head_js %}
 			<script src="{{ STATIC_URL }}js/jquery-2.1.4.min.js"></script>
+			<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 		{% endblock %}
 		{% block head_css %}
 			<link rel="stylesheet" href="{{ STATIC_URL }}css/base.css"/>
 			<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 			<link rel="shortcut icon" type="image/x-icon" href="{{ STATIC_URL }}images/euler.jpeg" />
+			<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 		{% endblock %}
 	</head>
 
@@ -79,14 +81,14 @@
 
 			<table class="table-of-contents">
 				<tr>
-					<td>#</td>
-					<td>Title</td>
-					<td>Solved</td>
+					<td class="table-header">#</td>
+					<td class="table-header">Title</td>
+					<td class="table-header solved">Solved</td>
 				</tr>
 				{% for problem in problems %}
 					<tr>
-						<td>{{ problem.number }}</td>
-						<td><a href="{{ problem.get_absolute_url }}">{{ problem.title}}</a></td>
+						<td class="table-element">{{ problem.number }}</td>
+						<td class="table-element"><a href="{{ problem.get_absolute_url }}">{{ problem.title}}</a></td>
 						<td class="solved">
 							{% if problem.solved %}
 								&#x2713;
