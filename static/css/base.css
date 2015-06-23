@@ -191,7 +191,7 @@ ul.pagination.nav.navbar-nav {
 #output-area {
 	float: left;
 	margin: 10px 0 30px 30px;
-	width: 65%;
+	width: auto;
 }
 
 #request-table {
