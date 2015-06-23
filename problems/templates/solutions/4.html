@@ -13,16 +13,16 @@
 			<caption>Log</caption>
 			<tbody>
 				<tr id="headers">
-					<td class="table-header">Min</td>
-					<td class="table-header">Max</td>
+					<td class="table-header">min</td>
+					<td class="table-header">max</td>
 					<td class="table-header">Largest palindromic product</td>
 					<td class="table-header">Timestamp</td>
 				</tr>
 				<tr id="placeholders">
-					<td id="min-result">&nbsp;</td>
-					<td id="max-result">&nbsp;</td>
-					<td id="value-result">&nbsp;</td>
-					<td id="time-result">&nbsp;</td>
+					<td id="min-result" class="table-element">&nbsp;</td>
+					<td id="max-result" class="table-element">&nbsp;</td>
+					<td id="value-result" class="table-element">&nbsp;</td>
+					<td id="time-result" class="table-element">&nbsp;</td>
 				</tr>
 			</tbody>
 		</table>
@@ -51,10 +51,10 @@
 
 		            	// prepend to top of the table
 		            	$('#headers').after(
-						    '<tr><td>' + 
-						    	response_data.min + '</td><td>' +
-						    	response_data.max + '</td><td>' +
-						    	response_data.value  + '</td><td>' +
+						    '<tr><td class="table-element">' + 
+						    	response_data.min + '</td><td class="table-element">' +
+						    	response_data.max + '</td><td class="table-element">' +
+						    	response_data.value  + '</td><td class="table-element">' +
 						    	response_data.last_requested  +
 						    '</td></tr>');
 		            },

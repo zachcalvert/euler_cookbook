@@ -17,9 +17,9 @@
 					<td class="table-header">Timestamp</td>
 				</tr>
 				<tr id="placeholders">
-					<td id="number-result">&nbsp;</td>
-					<td id="value-result">&nbsp;</td>
-					<td id="time-result">&nbsp;</td>
+					<td id="number-result" class="table-element">&nbsp;</td>
+					<td id="value-result" class="table-element">&nbsp;</td>
+					<td id="time-result" class="table-element">&nbsp;</td>
 				</tr>
 			</tbody>
 		</table>
@@ -48,9 +48,9 @@
 
 		            	// prepend to top of the table
 		            	$('#headers').after(
-						    '<tr><td>' + 
-						    	response_data.number + '</td><td>' +
-						    	response_data.value  + '</td><td>' +
+						    '<tr><td class="table-element">' + 
+						    	response_data.number + '</td><td class="table-element">' +
+						    	response_data.value  + '</td><td class="table-element">' +
 						    	response_data.last_requested  +
 						    '</td></tr>');
 		            },
