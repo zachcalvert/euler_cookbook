@@ -92,23 +92,10 @@ def euler_problem(request, problem_number):
 
 
 """
-Ajax views for returning calculated values to the problem pages
+Problem 1: Multiples of Three and Five
 """
-
 def get_multiples_of_three_and_five(request):
-	"""
-	"""
-	number = request.GET.get('number', None)
-
-	# ensure a value is provided
-	if not number:
-		return HttpResponse('Please provide a value.', status=400)
-
-	# ensure the value is an integer
-	try:
-		number = int(number)
-	except ValueError:
-		return HttpResponse('Please provide an integer value.', status=400)
+	number = utils.valid_input(request)
 
 	value = utils.multiples_of_three_and_five(number)
 
@@ -123,21 +110,8 @@ def get_multiples_of_three_and_five(request):
 """
 Problem 2: Even Fibonacci Numbers
 """
-
 def get_even_fibonacci_numbers(request):
-	"""
-	"""
-	number = request.GET.get('number', None)
-
-	# ensure a value is provided
-	if not number:
-		return HttpResponse('Please provide a value.', status=400)
-
-	# ensure the value is an integer
-	try:
-		number = int(number)
-	except ValueError:
-		return HttpResponse('Please provide an integer value.', status=400)
+	number = utils.valid_input(request)
 
 	value = utils.even_fibonacci_numbers(number)
 
@@ -148,11 +122,11 @@ def get_even_fibonacci_numbers(request):
 	}
 	return HttpResponse(json.dumps(content))
 
+
 """
 Problem 4: Largest Palindrome Product
 http://localhost:8000/largest_palindrome_product?min=100&max=999
 """
-
 def get_largest_palindrome_product(request):
 	"""
 	"""
@@ -177,10 +151,10 @@ Simple view that expects a request in the format:
 http://localhost:8000/difference?number=10 , where 10 is any natural number
 """
 def get_sum_square_difference(request):
+	
+	number = utils.valid_input(request)
 
-	n = int(request.GET.get('number', None))
-
-	value = utils.calculate_difference(n)
+	value = utils.calculate_difference(number)
 
 	content = {
 		'number': n,

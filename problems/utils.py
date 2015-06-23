@@ -4,6 +4,28 @@ def get_current_time():
 	now = datetime.now()
 	return now.strftime('%m-%d %H:%M:%S')
 
+
+def valid_input(request):
+	"""
+	helper function to yank the query arg out of request in the format
+	'<request_path>?number=10'
+	"""
+	number = request.GET.get('number', None)
+
+	# ensure a value is provided
+	if not number:
+		return HttpResponse('Please provide a value.', status=400)
+
+	# ensure the value is an integer
+	try:
+		number = int(number)
+	except ValueError:
+		return HttpResponse('Please provide an integer value.', status=400)
+
+	return number
+
+
+
 """
 Problem 1: Multiples of Three and Five
 """
@@ -25,7 +47,6 @@ def even_fibonacci_numbers(n):
 			total += a
 		a, b = b, a+b
 	return total
-
 
 
 """
