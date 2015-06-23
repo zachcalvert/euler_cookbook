@@ -40,7 +40,6 @@ def site_home(request, template_name = 'base.html'):
 	return render_to_response(template_name, context_instance=RequestContext(request, context))
 
 
-
 def about(request, template_name='about.html'):
 	context = {}
 	return render_to_response(template_name, context_instance=RequestContext(request, context))
@@ -92,8 +91,6 @@ def get_problem(request):
 
 
 
-
-
 def euler_problem(request, problem_number):
 	template_name = "solutions/{}.html".format(problem_number)
 	try:
@@ -108,7 +105,6 @@ def euler_problem(request, problem_number):
 	}
 
 	return render_to_response(template_name, context_instance=RequestContext(request, context))
-
 
 
 
@@ -137,7 +133,7 @@ def problem_one(request):
 	content = {
 		'number': number,
 		'value': value,
-		'last_requested': str(datetime.now())
+		'last_requested': utils.get_current_time()
 	}
 	return HttpResponse(json.dumps(content))
 
@@ -166,7 +162,7 @@ def get_even_fibonacci_numbers(request):
 	content = {
 		'number': number,
 		'value': value,
-		'last_requested': str(datetime.now())
+		'last_requested': utils.get_current_time()
 	}
 	return HttpResponse(json.dumps(content))
 
@@ -186,7 +182,7 @@ def get_sum_square_difference(request):
 	content = {
 		'number': n,
 		'value': value,
-		'last_requested': str(datetime.now())
+		'last_requested': utils.get_current_time()
 	}
 	
 	return HttpResponse(json.dumps(content))
@@ -221,7 +217,8 @@ def calculate_days(request):
 		'weekday': weekdays[weekday][1],
 		'day_of_month': day_of_month,
 		'start_year': start_year,
-		'end_year': end_year
+		'end_year': end_year,
+		'last_requested': utils.get_current_time()
 	}
 	content['num_days'] = utils.how_many(weekday, day_of_month, start_year, end_year)
 	return HttpResponse(json.dumps(content))
