@@ -3,13 +3,17 @@
 
 {% block content %}
 
+	<ul class="pagination nav navbar-nav">
+		<p style="font-size:18px;color:white;margin:0px!important">Contribute a solution</p>
+	</ul>
+
 	<form id="contribute-form" class="fancy" method="post">{% csrf_token %}
 	    <fieldset>
 			{{ form.as_ul }}
 		</fieldset>
         <li>
 		    {% block form-button %}
-		        <input class="button blue small" type="submit" value="{% trans 'Submit' %}" />
+		        <input class="solution-button" style="float:left;" type="submit" value="{% trans 'Submit' %}" />
 		    {% endblock %}
 		</li>
 	</form>

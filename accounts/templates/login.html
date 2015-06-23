@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
+	
+	<ul class="pagination nav navbar-nav">
+		<p style="font-size:18px;color:white;margin:0px!important">Login</p>
+	</ul>
+
 	{% if form.errors %}
 		<p>Your username and password didn't match. Please try again.</p>
 	{% endif %}
@@ -10,7 +15,7 @@
 			<table>
 				{{ form }}
 			</table>
-			<input id="login-button" type="submit" value="login" />
+			<input id="login-button" class="solution-button" style="float:left;" type="submit" value="login" />
 			<input type="hidden" name="next" value="/" />
 		</form>
 	</div>

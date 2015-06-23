@@ -28,6 +28,14 @@ td.solved {
 h3 {
 	margin-top: 0px!important;
 }
+
+fieldset {
+  /* min-width: 0; */
+  padding: 10px!important;
+  /* margin: 0; */
+  border: 0!important;
+}
+
 /* site-wide header stuff */
 
 #site-header {
