@@ -72,24 +72,6 @@ def contribute(request, template_name='contribute.html'):
 		context_instance=RequestContext(request, context))
 
 
-"""
-API endpoint to retrieve 
-"""
-def get_problem(request):
-
-	number = request.GET.get('number', '')
-
-	try:
-		p = Problem.objects.get(number=number)
-    
-	except Problem.DoesNotExist:
-		return HttpResponse(status_code=404)
-		
-	serializer = ProblemSerializer(p)
-	content = JSONRenderer().render(serializer.data)
-	return HttpResponse(content)
-
-
 
 def euler_problem(request, problem_number):
 	template_name = "solutions/{}.html".format(problem_number)

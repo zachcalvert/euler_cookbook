@@ -6,7 +6,6 @@ urlpatterns = [
 	url(r'^$', views.site_home, name='site_home'),
 	url(r'^about/$', views.about, name='about'),
 	url(r'^contribute/$', views.contribute, name='contribute'),
-	url(r'^problem$', views.get_problem, name='get_problem'),
 
 	url(r'^(?P<problem_number>\d+)(\..+)?/$', views.euler_problem, name='euler_problem'),
 
