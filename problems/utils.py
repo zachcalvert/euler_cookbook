@@ -18,13 +18,35 @@ def multiples_of_three_and_five(n):
 Problem 2: Even Fibonacci Numbers
 """
 def even_fibonacci_numbers(n):
-  a, b = 1, 1
-  total = 0
-  while a <= n:
-    if a % 2 == 0:
-      total += a
-    a, b = b, a+b
-  return total
+	a, b = 1, 1
+	total = 0
+	while a <= n:
+		if a % 2 == 0:
+			total += a
+		a, b = b, a+b
+	return total
+
+
+
+"""
+Problem 4: Largest Palidrome Product
+"""
+def is_palindrome(num):
+  return str(num) == str(num)[::-1]
+
+def largest_palindrome_product(minimum, maximum):
+	z = 0
+	x_in = 0
+	y_in = 0
+	for x in range(maximum, minimum, -1):
+		for y in range(maximum,minimum, -1):
+			if is_palindrome(x*y):
+				if x*y > z:
+					z = x*y
+					x_in = x
+					y_in = y
+
+	return '{0} ({1}*{2})'.format(z, x_in, y_in)
 
 
 """

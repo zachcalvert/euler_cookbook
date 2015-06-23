@@ -201,6 +201,10 @@ ul.pagination.nav.navbar-nav {
 	width: auto;
 }
 
+#login-prompt a, a:hover {
+	color: #65A7A1;
+}
+
 #solution {
 	display:none;
 	margin: 50px;

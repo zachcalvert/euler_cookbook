@@ -166,6 +166,27 @@ def get_even_fibonacci_numbers(request):
 	}
 	return HttpResponse(json.dumps(content))
 
+"""
+Problem 4: Largest Palindrome Product
+http://localhost:8000/largest_palindrome_product?min=100&max=999
+"""
+
+def get_largest_palindrome_product(request):
+	"""
+	"""
+	minimum = int(request.GET.get('min', None))
+	maximum = int(request.GET.get('max', None))
+
+	value = utils.largest_palindrome_product(minimum, maximum)
+
+	content = {
+		'min': minimum,
+		'max': maximum,
+		'value': value,
+		'last_requested': utils.get_current_time()
+	}
+	return HttpResponse(json.dumps(content))
+
 
 """
 Problem 6: Sum Square Difference
