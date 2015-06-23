@@ -97,10 +97,25 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'www', 'static')
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'www', 'media'),)
 STATIC_URL = '/static/'
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+COMPRESS_ENABLED = False  # safe default, expect override in settings_local.py
+COMPRESS_ROOT = STATIC_ROOT
+COMPRESS_URL = STATIC_URL
+COMPRESS_STORAGE = STATICFILES_STORAGE
 
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "static"),
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
+    'django.contrib.staticfiles.finders.FileSystemFinder',
 )
+
+COMPRESS_CSS_FILTERS = [
+    # Disable default filter to prevent compressed assets
+    # from diverging across app servers.
+    #'compressor.filters.css_default.CssAbsoluteFilter',
+    'compressor.filters.cssmin.CSSMinFilter',
+]
