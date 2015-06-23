@@ -120,7 +120,6 @@ Ajax views for returning calculated values to the problem pages
 def problem_one(request):
 	"""
 	"""
-
 	number = request.GET.get('number', None)
 
 	# ensure a value is provided
@@ -134,6 +133,35 @@ def problem_one(request):
 		return HttpResponse('Please provide an integer value.', status=400)
 
 	value = utils.multiples_of_three_and_five(number)
+
+	content = {
+		'number': number,
+		'value': value,
+		'last_requested': str(datetime.now())
+	}
+	return HttpResponse(json.dumps(content))
+
+
+"""
+Problem 2: Even Fibonacci Numbers
+"""
+
+def get_even_fibonacci_numbers(request):
+	"""
+	"""
+	number = request.GET.get('number', None)
+
+	# ensure a value is provided
+	if not number:
+		return HttpResponse('Please provide a value.', status=400)
+
+	# ensure the value is an integer
+	try:
+		number = int(number)
+	except ValueError:
+		return HttpResponse('Please provide an integer value.', status=400)
+
+	value = utils.even_fibonacci_numbers(number)
 
 	content = {
 		'number': number,

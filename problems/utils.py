@@ -9,6 +9,19 @@ def multiples_of_three_and_five(n):
 
 
 """
+Problem 2: Even Fibonacci Numbers
+"""
+def even_fibonacci_numbers(n):
+  a, b = 1, 1
+  total = 0
+  while a <= n:
+    if a % 2 == 0:
+      total += a
+    a, b = b, a+b
+  return total
+
+
+"""
 Problem 6: Sum Square Difference
 """
 def calculate_difference(n):
