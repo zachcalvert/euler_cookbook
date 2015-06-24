@@ -57,3 +57,5 @@ docs/_build/
 target/
 
 staticfiles/*
+
+euler_cookbook/local_settings.py

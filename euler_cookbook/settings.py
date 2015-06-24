@@ -115,8 +115,10 @@ STATICFILES_FINDERS = (
 )
 
 COMPRESS_CSS_FILTERS = [
-    # Disable default filter to prevent compressed assets
-    # from diverging across app servers.
-    #'compressor.filters.css_default.CssAbsoluteFilter',
     'compressor.filters.cssmin.CSSMinFilter',
 ]
+
+try:
+    from local_settings import *
+except ImportError as e:
+    pass
