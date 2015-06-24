@@ -21,7 +21,7 @@ def site_home(request, template_name = 'base.html'):
 
 	problems = Problem.objects.all()
 
-	paginator = Paginator(problems, 50)
+	paginator = Paginator(problems, 20)
 	page = request.GET.get('page')
 
 	try:

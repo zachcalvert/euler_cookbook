@@ -114,6 +114,7 @@ ul.hmenu a:hover {
 	padding: 13px;
 	display: inline-block;
 	border-radius: 0!important;
+	font-size: 18px;
 }
 
 .pagination a {
@@ -128,9 +129,10 @@ ul.hmenu a:hover {
 /*home page table*/
 
 .table-of-contents {
-	margin: 0px 20px 20px;
-	width: 80%;
-	max-width: 700px;
+	margin: 0px 5% 20px;
+	width: 90%;
+	max-width: 900px;
+	font-size: 28px;
 }
 .table-of-contents a {
 	color: #444444;
@@ -188,24 +190,27 @@ ul.hmenu a:hover {
 .problem-description {
 	margin: 0 15%;
 	padding: 10px 0;
-	font-size:18px;
+	font-size:24px;
 }
 
 #input-area {
-	float:left; 
 	margin: 5%;
 	display: block;
+	font-size:26px;
+	text-align: center;
 }
 #output-area {
-	float: left;
+	text-align: center;
 	margin: 10px 0 30px 30px;
 	width: auto;
+	font-size:26px;
 }
 
 #request-table {
 	margin-bottom: 30px;
 	max-width: 700px;
-	width: 100%;
+	width: 90%;
+	align: center;
 }
 #number-result {
 	width: 50px;
@@ -229,10 +234,9 @@ ul.hmenu a:hover {
 	margin: 50px;
 }
 .solution-button {
-	padding: 10px 16px;
+	padding: 10px 30px;
 	background: #65A7A1;
-	float: right;
-	margin: 0 5%;
+	margin: 0px 40% 20px;
 	color: #FFF;
 }
 
