@@ -12,7 +12,7 @@ class Command(BaseCommand):
     """
     def handle(self, *args, **options):
         for i in range(1,510):
-            url = 'http://eulerscookbook.org/problem?number={}'.format(i)
+            url = 'http://eulerscookbook.org/api/problems/{}/'.format(i)
             response = requests.get(url)
             content = json.loads(response.content)
             print(content)
