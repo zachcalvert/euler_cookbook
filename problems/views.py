@@ -122,6 +122,21 @@ def get_even_fibonacci_numbers(request):
 	}
 	return HttpResponse(json.dumps(content))
 
+"""
+Problem 3: Largest Prime Factor
+"""
+def get_largest_prime_factor(request):
+	number = utils.valid_input(request)
+
+	value = utils.largest_prime_factor(number)
+
+	content = {
+		'number': number,
+		'value': value,
+		'last_requested': utils.get_current_time()
+	}
+	return HttpResponse(json.dumps(content))
+
 
 """
 Problem 4: Largest Palindrome Product

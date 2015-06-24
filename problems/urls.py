@@ -15,6 +15,9 @@ urlpatterns = [
 	url(r'^even_fibonacci_numbers$', views.get_even_fibonacci_numbers, 
 		name='get_even_fibonacci_numbers'),
 
+	url(r'^largest_prime_factor$', views.get_largest_prime_factor, 
+		name='get_largest_prime_factor'),
+
 	url(r'^largest_palindrome_product$', views.get_largest_palindrome_product, 
 		name='get_largest_palindrome_product'),
 

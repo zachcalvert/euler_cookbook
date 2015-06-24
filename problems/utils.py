@@ -50,6 +50,18 @@ def even_fibonacci_numbers(n):
 
 
 """
+Problem 3: Largest Prime Factor
+"""
+def largest_prime_factor(n):
+	i = 2
+	while i * i < n:
+	     while n % i == 0:
+	         n = n / i
+	     i = i + 1
+
+	return n
+
+"""
 Problem 4: Largest Palidrome Product
 """
 def is_palindrome(num):

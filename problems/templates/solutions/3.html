@@ -1,0 +1,69 @@
+{% extends 'problem.html' %}
+
+{% block content %}
+	<div id="input-area">
+		<p>Enter any number <i>n</i> to see it in action!</p>
+		<input type="text" id="id_calculator" value="">
+		<input type="submit" id="submit-button" value="Calculate">
+	</div>
+
+	<div id="output-area">
+		<table id="request-table">
+			<caption>Log</caption>
+			<tbody>
+				<tr id="headers">
+					<td class="table-header">n</td>
+					<td class="table-header">Largest Prime Factor of n</td>
+					<td class="table-header">Timestamp</td>
+				</tr>
+				<tr id="placeholders">
+					<td id="number-result" class="table-element">&nbsp;</td>
+					<td id="value-result" class="table-element">&nbsp;</td>
+					<td id="time-result" class="table-element">&nbsp;</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+{% endblock %}
+
+{% block extra_body_content %}
+	{{ block.super }}
+	<script>
+		$(document).ready(function () {
+		    function calculateResult(number) {
+		        $.ajax({
+		            url: '{% url "get_largest_prime_factor" %}' + '?number=' + number,
+		            type: 'get',
+		            contentType: 'application/json',
+		            success: function(response) {
+		            	// fill table cells with results
+		            	var response_data = JSON.parse(response);
+
+		            	// check for existing entries for this number and remove
+		            	$("#request-table tr td:nth-child(1)").each(function () {
+		            		if (response_data.number == $(this).html()) {
+		            			$(this).closest('tr').css('display', 'None');
+		            		}
+						});
+
+		            	// prepend to top of the table
+		            	$('#headers').after(
+						    '<tr><td class="table-element">' + 
+						    	response_data.number + '</td><td class="table-element">' +
+						    	response_data.value  + '</td><td class="table-element">' +
+						    	response_data.last_requested  +
+						    '</td></tr>');
+		            },
+		            error: function (jqXhr, textStatus, errorThrown) {
+		                console.log(errorThrown);
+		            }
+		        });
+		    };
+
+		    $("#submit-button").click(function(){
+		        var number = $( "#id_calculator" ).val()
+		        calculateResult(number)
+	    	});
+		});
+	</script>
+{% endblock %}
