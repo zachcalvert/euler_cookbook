@@ -20,11 +20,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = 'n=!uuzh5#7%c_c4#*6p_qk%3we&r@mh)5av3d9+bqm2j$_8#i^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-TEMPLATE_DEBUG = True
+TEMPLATE_DEBUG = False
 
-# ALLOWED_HOSTS = ['.eulerscookbook.org',]
+ALLOWED_HOSTS = ['.eulerscookbook.org','127.0.0.1', 'localhost']
 
 
 # Application definition
