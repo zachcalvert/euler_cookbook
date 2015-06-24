@@ -14,6 +14,7 @@ class ProblemForm(forms.ModelForm):
 
 class ProblemAdmin(admin.ModelAdmin):
     list_display = ('number', 'title', 'solved')
+    ordering = ('number',)
     form = ProblemForm
 
 class ContributionAdmin(admin.ModelAdmin):
