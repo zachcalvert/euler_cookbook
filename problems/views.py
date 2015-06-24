@@ -172,7 +172,7 @@ def get_sum_square_difference(request):
 	value = utils.calculate_difference(number)
 
 	content = {
-		'number': n,
+		'number': number,
 		'value': value,
 		'last_requested': utils.get_current_time()
 	}
