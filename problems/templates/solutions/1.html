@@ -1,31 +1,5 @@
 {% extends 'problem.html' %}
 
-{% block content %}
-	<div id="input-area">
-		<p>Enter any number <i>n</i> to see it in action!</p>
-		<input type="text" id="id_calculator" value="">
-		<input type="submit" id="submit-button" value="Calculate">
-	</div>
-
-	<div id="output-area">
-		<table id="request-table">
-			<caption>Log</caption>
-			<tbody>
-				<tr id="headers">
-					<td class="table-header">n</td>
-					<td class="table-header">Sum of multiples less than n</td>
-					<td class="table-header">Timestamp</td>
-				</tr>
-				<tr id="placeholders">
-					<td id="number-result" class="table-element">&nbsp;</td>
-					<td id="value-result" class="table-element">&nbsp;</td>
-					<td id="time-result" class="table-element">&nbsp;</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-{% endblock %}
-
 {% block extra_body_content %}
 	{{ block.super }}
 	<script>

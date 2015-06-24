@@ -4,13 +4,31 @@
 {% block header %}
 	{{ block.super }}
 	<div class="pagination">
-		<span class="headerthree">Problem {{ problem.number }}: {{ problem.title}}&nbsp;&nbsp;&nbsp;<a style="font-size:14px" href="{{ problem.link }}">view on project euler</a></span>
+		<span class="headerthree">Problem {{ problem.number }}: {{ problem.title}}</span>
 		{% if problem.number != 1 %}
 			<a class="prev-problem" href="{{ problem | previous_url }}"> <&nbsp;&nbsp;&nbsp;Previous</a>
 		{% endif %}
 		<a class="next-problem" href="{{ problem | next_url }}">Next &nbsp;&nbsp;></a>
 	</div>
 {% endblock %}	
+
+
+{% block description %}
+	<div class="problem-description">
+		<p>{{ problem.description | safe }}</p>
+	</div>
+{% endblock %}
+
+
+
+{% block content %}
+	{% if problem.solved %}
+		<div id="interact">
+			{% include 'solutions/interact.html' %}
+		</div>
+	{% endif %}
+{% endblock %}
+
 
 {% block solution %}
 
@@ -47,19 +65,8 @@
 {% endblock %}
 
 
-{% block description %}
-	<div class="problem-description">
-		<p>{{ problem.description | safe }}</p>
-	</div>
-{% endblock %}
-
-
-
-{% block content %}
-
-{% endblock %}
-
 {% block footer %}
+	<a id="euler-link" style="font-size:14px; float:right;" href="{{ problem.link }}">view on project euler</a>
 {% endblock %}
 
 {% block extra_body_content %}

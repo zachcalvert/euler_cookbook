@@ -36,6 +36,9 @@ fieldset {
   /* margin: 0; */
   border: 0!important;
 }
+ caption {
+ 	color: #444!important;
+ }
 
 /* site-wide header stuff */
 
@@ -114,6 +117,7 @@ ul.hmenu a:hover {
 	padding: 13px;
 	display: inline-block;
 	border-radius: 0!important;
+	font-size: 17px;
 }
 
 .pagination a {
@@ -128,10 +132,10 @@ ul.hmenu a:hover {
 /*home page table*/
 
 .table-of-contents {
-	margin: 0px 20px 20px;
-	width: 80%;
-	max-width: 700px;
+	margin: 05%;
+	width: 90%;
 }
+
 .table-of-contents a {
 	color: #444444;
 	text-decoration: none!important;
@@ -145,11 +149,11 @@ ul.hmenu a:hover {
 	margin: 0 10px;
 }
 
-
 /* login page */
 #login-form {
 	padding: 20px;
 }
+
 #login-button {
 	margin: 10px;
 }
@@ -186,36 +190,44 @@ ul.hmenu a:hover {
 }
 
 .problem-description {
-	margin: 0 15%;
+	margin: 0 10% 0 5%;
 	padding: 10px 0;
 	font-size:18px;
 }
 
+#interact {
+	border:1px solid black;
+	margin:3%;
+	padding:1%;
+}
+
 #input-area {
-	float:left; 
-	margin: 5%;
+	margin: 2% 5%;
 	display: block;
 }
+
 #output-area {
-	float: left;
-	margin: 10px 0 30px 30px;
+	margin: 10px 0 30px 5%;
 	width: auto;
 }
 
 #request-table {
-	margin-bottom: 30px;
 	max-width: 700px;
-	width: 100%;
+	width: 95%;
 }
+
 #number-result {
 	width: 50px;
 }
+
 #time-result {
 	width: 200px;
 }
+
 .table-header {
 	font-weight: bold;
 }
+
 .table-header, .table-element {
 	padding:10px;
 }
@@ -231,8 +243,8 @@ ul.hmenu a:hover {
 .solution-button {
 	padding: 10px 16px;
 	background: #65A7A1;
-	float: right;
-	margin: 0 5%;
+	float: left;
+	margin: 0 5% 5%;
 	color: #FFF;
 }
 
@@ -243,6 +255,13 @@ ul.hmenu a:hover {
 
 #contribute-form li {
 	padding: 5px;
+}
+
+#euler-link {
+	font-size:14px; 
+	float:right;
+	margin-right: 5%;
+	color: #444444;
 }
 
 #footer {
