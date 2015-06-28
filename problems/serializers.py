@@ -5,11 +5,10 @@ from rest_framework import serializers, viewsets
 from models import Problem
 
 class ProblemSerializer(serializers.HyperlinkedModelSerializer):
-	class Meta: 
-		model = Problem
-		fields = ('number', 'title', 'description', 'solved', 'solution')
-		extra_kwargs = {
-            # 'url': {'lookup_field': 'number'}
+    class Meta: 
+        model = Problem
+        fields = ('number', 'title', 'description', 'solved', 'solution')
+        extra_kwargs = {
             'problems': {'lookup_field': 'number'}
         }
 

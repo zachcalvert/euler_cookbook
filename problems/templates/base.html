@@ -86,7 +86,7 @@
 				{% for problem in problems %}
 					<tr>
 						<td class="table-element">{{ problem.number }}</td>
-						<td class="table-element"><a href="{{ problem.get_absolute_url }}">{{ problem.title}}</a></td>
+						<td class="table-element"><a href='{% url "euler_problem" problem.number %}'>{{ problem.title}}</a></td>
 						<td class="solved">
 							{% if problem.solved %}
 								&#x2713;

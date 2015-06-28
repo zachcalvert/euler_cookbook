@@ -4,12 +4,12 @@ from django import forms
 from problems.models import Problem, Contribution
 
 class ProblemForm(forms.ModelForm):
-	description = forms.CharField(widget=forms.Textarea)
-	solution = forms.CharField(widget=forms.Textarea)
+    description = forms.CharField(widget=forms.Textarea)
+    solution = forms.CharField(widget=forms.Textarea)    
 
-	class Meta:
-		model = Problem
-		fields = '__all__'
+    class Meta:
+        model = Problem
+        fields = '__all__'
 
 
 class ProblemAdmin(admin.ModelAdmin):
