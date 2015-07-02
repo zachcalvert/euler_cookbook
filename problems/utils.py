@@ -41,7 +41,7 @@ def even_fibonacci_numbers(n):
     while a <= n:
         if a % 2 == 0:
             total += a
-            a, b = b, a+b
+        a, b = b, a+b
     return total
 
 
