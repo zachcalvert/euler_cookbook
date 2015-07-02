@@ -132,8 +132,9 @@ ul.hmenu a:hover {
 /*home page table*/
 
 .table-of-contents {
-	margin: 05%;
+	margin: 5%;
 	width: 90%;
+	height: 80%;
 }
 
 .table-of-contents a {
