@@ -6,8 +6,6 @@
 		$(document).ready(function () {
 		    function calculateResult(number) {
 		        $.ajax({
-		        	// hard coded urls are bad
-		            // url: 'http://localhost:8000/difference?number=' + number,
 		            url: '{% url "get_sum_square_difference" %}' + '?number=' + number,
 		            type: 'get',
 		            contentType: 'application/json',

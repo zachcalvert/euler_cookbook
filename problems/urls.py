@@ -7,7 +7,7 @@ urlpatterns = [
     url(r'^about/$', views.about, name='about'),
     url(r'^contribute/$', views.contribute, name='contribute'),    
 
-    url(r'^(?P<problem_number>\d+)(\..+)?/$', views.euler_problem, name='euler_problem'),    
+    url(r'^(?P<problem_number>\d+)(\..+)?/$', views.EulerProblemView.as_view(), name='euler_problem'),    
 
     url(r'^multiples_of_three_and_five$', views.get_multiples_of_three_and_five, 
     	name='get_multiples_of_three_and_five'),    

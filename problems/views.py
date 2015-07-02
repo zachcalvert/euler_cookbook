@@ -3,6 +3,7 @@ from datetime import datetime
 from rest_framework.renderers import JSONRenderer
 
 from django.views.decorators.csrf import csrf_exempt
+from django.views.generic import TemplateView
 from django.shortcuts import render_to_response, get_object_or_404, redirect
 from django.template import RequestContext, TemplateDoesNotExist
 from django.template.loader import get_template
@@ -16,6 +17,7 @@ from problems import utils
 from problems.serializers import ProblemSerializer
 
 from forms import ContributionForm
+
 
 def site_home(request, template_name = 'base.html'):
 
@@ -72,21 +74,24 @@ def contribute(request, template_name='contribute.html'):
     context_instance=RequestContext(request, context))
 
 
+class EulerProblemView(TemplateView):
+    template_name = "problem.html"
 
-def euler_problem(request, problem_number):
-    template_name = "solutions/{}.html".format(problem_number)
-    try:
-        get_template(template_name)
-    except TemplateDoesNotExist:
-        template_name = "problem.html"    
+    def dispatch(self, request, *args, **kwargs):
+        self.problem = Problem.objects.get(number=kwargs['problem_number']) 
 
-    problem = get_object_or_404(Problem, number=problem_number)    
+        template_name = "solutions/{}.html".format(self.problem.number)
+        try:
+            get_template(template_name)
+        except TemplateDoesNotExist:
+            template_name = "problem.html"
 
-    context = {
-        'problem': problem,
-    }    
+        return super(EulerProblemView, self).dispatch(request, *args, **kwargs)
 
-    return render_to_response(template_name, context_instance=RequestContext(request, context))
+    def get_context_data(self, **kwargs):
+        context = super(EulerProblemView, self).get_context_data(**kwargs)
+        context['problem'] = self.problem
+        return context
 
 
 def get_multiples_of_three_and_five(request):
