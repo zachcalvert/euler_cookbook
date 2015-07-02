@@ -19,9 +19,9 @@ from forms import ContributionForm
 
 def site_home(request, template_name = 'base.html'):
 
-    problems = Problem.objects.all()    
+    problems = Problem.objects.filter(number__lte=100)    
 
-    paginator = Paginator(problems, 50)
+    paginator = Paginator(problems, 10)
     page = request.GET.get('page')    
 
     try:

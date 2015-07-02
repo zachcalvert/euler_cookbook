@@ -60,7 +60,9 @@
 
 		{% block content %}
 			<ul class="pagination nav navbar-nav">
-			    {% if problems.has_previous %}
+			    {% if problems.number == 1 %}
+			    	<a href="#">Prev</a>
+			    {% else %}
 			        <a href="?page={{ problems.previous_page_number }}">Prev</a>
 			    {% endif %}
 
@@ -72,7 +74,9 @@
 				    {% endif %}
 				{% endfor %}
 
-			    {% if problems.has_next %}
+			    {% if problems.number == 10 %}
+			    	<a href="#">Next</a>
+			    {% else %}
 			        <a href="?page={{ problems.next_page_number }}">Next</a>
 			    {% endif %}
 			 </ul>
@@ -95,24 +99,6 @@
 					</tr>
 				{% endfor %}
 			</table>
-			
-			<ul class="pagination nav navbar-nav">
-			    {% if problems.has_previous %}
-			        <a href="?page={{ problems.previous_page_number }}">Prev</a>
-			    {% endif %}
-
-			    {% for page in problems.paginator.page_range %}
-				    {% if problems.number == page %}
-				    	<span id="current-page">{{ page }}</span> |
-				    {% else %}
-				    	<a href="?page={{ page }}">{{ page }}</a> |
-				    {% endif %}
-				{% endfor %}
-
-			    {% if problems.has_next %}
-			        <a href="?page={{ problems.next_page_number }}">Next</a>
-			    {% endif %}
-			 </ul>
 		{% endblock %}
 
 		{% block solution %}{% endblock %}
