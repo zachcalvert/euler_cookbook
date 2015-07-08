@@ -92,8 +92,8 @@ ul.hmenu {
   margin: 0;
   padding: 10px;
   text-align: left;
-  line-height: 40px;
-  font-size: 18px;
+  line-height: 50px;
+  font-size: 28px;
   list-style: none;
   z-index: 5;
 }
@@ -117,7 +117,7 @@ ul.hmenu a:hover {
 	padding: 13px;
 	display: inline-block;
 	border-radius: 0!important;
-	font-size: 17px;
+	font-size: 28px;
 }
 
 .pagination a {
@@ -134,6 +134,7 @@ ul.hmenu a:hover {
 .table-of-contents {
 	margin: 05%;
 	width: 90%;
+	font-size: 28px;
 }
 
 .table-of-contents a {
@@ -192,7 +193,7 @@ ul.hmenu a:hover {
 .problem-description {
 	margin: 0 10% 0 5%;
 	padding: 10px 0;
-	font-size:18px;
+	font-size:24px;
 }
 
 #interact {
